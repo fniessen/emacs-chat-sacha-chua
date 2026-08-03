@@ -1,0 +1,235 @@
+#+TITLE:     Emacs Chat avec Sacha Chua
+#+AUTHOR:    Fabrice Niessen
+#+DATE:      2026-08-13
+#+LANGUAGE:  fr
+#+OPTIONS:   toc:2 num:2
+
+# HTML export.
+#+SETUPFILE: ~/org/setup/html-theme-readtheorg.setup
+
+# LaTeX export.
+#+LATEX_CLASS: mcreport
+#+SETUPFILE: ~/org/setup/latex-listings.setup
+#+SETUPFILE: ~/org/setup/latex-admonitions.setup
+
+* Présentation
+
+Je suis consultant IT en Belgique (à Leuven ;-)) et utilisateur passionné
+d'Emacs depuis 1999.
+
+Au fil des années, j'ai développé plusieurs projets /open source/ autour d'Emacs
+et d'Org mode, principalement pour :
+
+- la personnalisation d'Emacs ;
+- l'automatisation des tâches répétitives (DRY) ;
+- la rédaction et la publication de documents techniques (vers HTML, LaTeX et
+  PDF) à partir d'une source unique (macros Org) ;
+- la diffusion d'Org mode à travers des /refcards/ sur la syntaxe Org mode et sur
+  Org Babel (/literate programming/, /reproducible research/).
+
+#+begin_tip
+Aujourd'hui, la plupart de mes outils et expérimentations sont publiés sur
+GitHub et servent également de support à mes formations EmacsBoost (et
+ShellBoost... et GitBoost...).
+#+end_tip
+
+Référence : https://github.com/fniessen
+
+* Agenda
+
+Quelques sujets que l'on pourrait aborder :
+
+- mon parcours avec Emacs ;
+- le thème (officiel) de couleurs Leuven ;
+- ma configuration Emacs ("Emacs Leuven") ;
+- org-html-themes ;
+- boost-org-latex-toolkit ;
+- mon organisation quotidienne ;
+- quelques astuces et automatisations ;
+- les formations EmacsBoost.
+
+Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
+
+* leuven-theme
+
+Le thème =leuven= est un thème clair qui privilégie :
+
+- la lisibilité ;
+- un contraste suffisant ;
+- des couleurs peu fatigantes ;
+- une hiérarchie visuelle claire.
+
+Je l'ai conçu pour pouvoir travailler plusieurs heures par jour sans fatigue
+visuelle.
+
+Référence : https://github.com/fniessen/emacs-leuven-theme
+
+* Emacs Leuven (EmacsBoost)
+
+Ma configuration =emacs-leuven= est l'aboutissement de nombreuses années
+d'utilisation quotidienne.
+
+L'objectif n'est pas de montrer "la meilleure configuration Emacs", mais une
+configuration :
+
+- cohérente ;
+- documentée ;
+- facile à comprendre ;
+- composée de plein de petites améliorations qui, mises bout à bout, changent
+  vraiment l'expérience utilisateur -- et rendent Emacs tout simplement
+  indispensable.
+
+C'est aussi un excellent support pédagogique pour découvrir de nombreuses
+fonctionnalités d'Emacs.
+
+#+begin_note
+Depuis quelque temps, je suis progressivement en train de faire évoluer ce
+projet sous le nom *EmacsBoost*. Ce nouveau nom reflète mieux son ambition :
+proposer non seulement une configuration Emacs prête à l'emploi, mais également
+un ensemble cohérent de configurations, d'automatisations et d'outils pour aider
+chacun à tirer le meilleur parti d'Emacs.
+#+end_note
+
+Référence : https://github.com/fniessen/emacs-leuven
+
+* Export vers HTML
+
+=org-html-themes= est né d'un besoin très concret : *produire facilement des
+exports* HTML Org mode qui soient directement publiables, professionnels et
+agréables à lire.
+
+Le projet fournit plusieurs thèmes complets (dont *ReadTheOrg* et *Bigblow*)
+ainsi que toute l'infrastructure nécessaire pour transformer un simple document
+Org en une documentation moderne.
+
+Objectifs :
+
+- zéro CSS à écrire ;
+- une navigation confortable ;
+- une excellente lisibilité ;
+- un rendu professionnel ;
+- une personnalisation simple.
+
+Référence : https://github.com/fniessen/org-html-themes
+
+* Export vers PDF
+
+Références :
+- https://github.com/fniessen/boost-org-latex-toolkit
+- https://github.com/fniessen/org-macros
+
+* Mon organisation quotidienne
+
+** TODO Org mode
+
+Org mode est le centre de mon organisation.
+
+Je l'utilise pour :
+
+- gérer mes tâches ;
+- prendre des notes ;
+- préparer mes (supports de) formations ;
+- écrire de la documentation ;
+- suivre mes projets personnels.
+
+** STRT Suivi du temps passé
+
+Je mesure précisément le temps consacré à mes activités professionnelles grâce
+au système de =org-clock-in= / =org-clock-out=.
+
+Cela me permet :
+
+- de retrouver facilement ce que j'ai fait ;
+- de produire des factures.
+
+* Quelques astuces
+
+Quelques petites choses qui font *gagner beaucoup de temps*.
+
+** M-w sans sélectionner de région
+
+Copier la ligne courante lorsqu'aucune région n'est active.
+
+Référence :
+https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#deletion-and-killing
+
+** Git
+
+*** EDiff
+
+Référence :
+https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#vc-directory-mode
+
+*** Messages de commit
+
+Génération automatique de messages de commit par IA.
+
+Référence :
+https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt#git-commit-messages
+
+** Génération automatique de contenu
+
+La fonction =boost--org-update-generated-content-before-save= met automatiquement à jour
+certaines parties d'un document avant son enregistrement.
+
+Cela évite les oublis et garantit que les documents restent cohérents.
+
+Référence :
+https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a6-dynamic-blocks
+
+** Édition rectangle
+
+** Autres automatisations
+
+Quelques exemples :
+
+- raccourcis clavier (~C-x C-j~ dans Dired) ;
+- commandes personnalisées.
+
+** o dans Dired
+
+** Number of matches in C-s
+
+** C-s C-o
+
+** Helm
+
+F3 = helm-for-files, si helm est installé
+
+** F2-F3-F5-F6
+
+* Formations EmacsBoost
+
+L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
+d'Emacs que j'utilise au quotidien, et qui me font réellement gagner du temps.
+
+Les formations mettent l'accent sur :
+
+- les raccourcis utiles ;
+- Org mode ;
+- la gestion des projets ;
+- les automatisations ;
+- la personnalisation ;
+- les bonnes pratiques.
+
+L'objectif est que les participants puissent appliquer immédiatement ce qu'ils
+ont appris dès leur retour au travail.
+
+Référence : https://emacsboost.com
+
+** Témoignages
+
+Quelques retours récurrents des participants :
+
+- "J'ai découvert énormément de fonctionnalités que je n'aurais jamais trouvées
+  seul."
+- "Le gain de productivité est immédiat."
+- "La formation est très concrète."
+- "Même après 20 ans d'utilisation quotidienne d'Emacs, j'ai appris énormément."
+
+* Merci
+
+Merci pour ton intérêt !
+
+J'espère que cette conversation aura été une bonne occasion d'échanger quelques
+idées, expériences et astuces autour d'Emacs, d'Org mode et de l'/open source/.
