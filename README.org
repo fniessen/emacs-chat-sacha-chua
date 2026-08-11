@@ -192,11 +192,12 @@ Quelques exemples :
 
 ** C-s C-o
 
-** Productivity key bindings
+** Raccourcis de productivité
 
-The following function keys provide a Borland Pascal-like workflow for file
-management, window navigation, keyboard macros, version control, compilation
-errors, and buffer management.
+Les touches de fonction ci-dessous fournissent un environnement de travail
+inspiré de Borland Pascal pour les opérations les plus courantes : gestion des
+fichiers, navigation entre fenêtres, macros clavier, contrôle de version,
+navigation dans les erreurs de compilation et gestion des buffers.
 
 | Key     | Command                         |
 |---------+---------------------------------|
@@ -206,7 +207,7 @@ errors, and buffer management.
 | ~<f5>~    | ~boost-toggle-window-split~       |
 | ~<f6>~    | ~boost-previous-buffer-or-window~ |
 |---------+---------------------------------|
-| ~<f8>~    | ~kmacro-call-macro~               |
+| ~<f8>~    | ~call-last-kbd-macro~             |
 | ~S-<f8>~  | ~boost-toggle-kmacro-recording~   |
 | ~C-<f8>~  | ~kmacro-name-last-macro~          |
 |---------+---------------------------------|
