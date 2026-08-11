@@ -194,21 +194,28 @@ Quelques exemples :
 
 ** Productivity key bindings
 
-| key     | command                                        |
-|---------+------------------------------------------------|
-| ~<f2>~    | save-buffer                                    |
-| ~<f3>~    | find-file / helm-for-files                     |
-| ~<f5>~    | boost-toggle-window-split                      |
-| ~<f6>~    | other-window / boost-previous-buffer-or-window |
-| ~<f8>~    | kmacro-call-macro                              |
-| ~S-<f8>~  | boost-toggle-kmacro-recording                  |
-| ~S-<f12>~ | boost-kill-current-buffer                      |
-| ~C-<f12>~ | boost-helm-generic-imenu                       |
-| ~M-<f12>~ | bury-buffer                                    |
-|---------+------------------------------------------------|
-| ~C-c 1~   | find-name-dired                                |
-| ~C-c 2~   | find-grep-dired                                |
-| ~C-c 3~   | rgrep                                          |
+| Key     | Command                         |
+|---------+---------------------------------|
+| ~<f2>~    | ~save-buffer~                     |
+| ~<f3>~    | ~find-file~ / ~helm-for-files~      |
+| ~<f5>~    | ~boost-toggle-window-split~       |
+| ~<f6>~    | ~boost-previous-buffer-or-window~ |
+| ~<f8>~    | ~kmacro-call-macro~               |
+| ~S-<f8>~  | ~boost-toggle-kmacro-recording~   |
+| ~C-<f8>~  | ~kmacro-name-last-macro~          |
+| ~<f9>~    | ~org-save-buffer-and-do-related~  |
+| ~C-<f9>~  | ~boost-vc-status-here~            |
+| ~<f10>~   | ~next-error~                      |
+| ~S-<f10>~ | ~previous-error~                  |
+| ~C-<f10>~ | ~first-error~                     |
+| ~<f11>~   | ~undo~                            |
+| ~S-<f12>~ | ~boost-kill-current-buffer~       |
+| ~C-<f12>~ | ~boost-helm-generic-imenu~        |
+| ~M-<f12>~ | ~bury-buffer~                     |
+|---------+---------------------------------|
+| ~C-c 1~   | ~find-name-dired~                 |
+| ~C-c 2~   | ~find-grep-dired~                 |
+| ~C-c 3~   | ~rgrep~                           |
 
 * Formations EmacsBoost
 
