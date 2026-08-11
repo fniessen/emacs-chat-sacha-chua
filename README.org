@@ -196,7 +196,18 @@ Quelques exemples :
 
 F3 = helm-for-files, si helm est installé
 
-** F2-F3-F5-F6
+** Borland Pascal key bindings
+
+| key   | command                                   |
+|-------+-------------------------------------------|
+| f2    | save-buffer                               |
+| f3    | find-file, helm-for-files                 |
+| f5    | lvn-toggle-or-delete-window-layout        |
+| f6    | other-window, lvn-switch-or-rotate-buffer |
+|-------+-------------------------------------------|
+| C-c 1 | find-name-dired                           |
+| C-c 2 | find-grep-dired                           |
+| C-c 3 | rgrep                                     |
 
 * Formations EmacsBoost
 
