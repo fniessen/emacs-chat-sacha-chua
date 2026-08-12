@@ -4,6 +4,8 @@
 #+LANGUAGE:  fr
 #+OPTIONS:   toc:2 num:2
 
+#+SETUPFILE: ~/org/setup/org-macros.setup
+
 # HTML export.
 #+SETUPFILE: ~/org/setup/html-theme-readtheorg.setup
 
@@ -173,33 +175,40 @@ https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt#gi
 
 ** Mise à jour automatique du contenu avant enregistrement
 
-La fonction =boost--org-update-generated-content-before-save= met automatiquement à jour
-certaines parties d'un document avant son enregistrement.
+La fonction =boost--org-update-generated-content-before-save= met automatiquement
+à jour certaines parties du document juste avant l'enregistrement : elle
+recalcule les blocs dynamiques et les tables, et réaligne les tags.
 
-Cela évite les oublis et garantit que les documents restent cohérents.
+Cela évite les oublis et garantit que
+{{{hl(les données dérivées restent synchronisées avec leur source)}}}.
 
-Exemple :
+{{{clearpage}}}
+
+Lignes de facturation :
 
 #+name: participants
+#+ATTR_HTML: :style margin-left:auto; margin-right:auto;
 | Nom           | Société | Prix HT |   |
 |---------------+---------+---------+---|
 | Alice Martin  | ACME    |  500.00 | \EUR |
 | Bob Dupont    | ACME    |  500.00 | \EUR |
 | Claire Durand | Contoso |  750.00 | \EUR |
 | David Leroy   | ACME    |  500.00 | \EUR |
+|---------------+---------+---------+---|
+| Total         |         | 2250.00 | \EUR |
 #+TBLFM: @6$3=vsum(@I..@-I);%.2f
 
-Comptabilité :
+Montant à facturer :
 
 #+LATEX: \hfill\colorbox{black!10}{\begin{minipage}{7.5cm}
-#+ATTR_HTML: :style margin-left:auto; margin-right:0; background:#f2f2f2;
+#+ATTR_HTML: :style margin-left:auto; margin-right:0;
 #+ATTR_LATEX: :environment tabu :align Xrl
 | /Sous-total HT/ | 2250.00 | \EUR |
 |---------------+---------+---|
 | /TVA @ 21%/     |  472.50 | \EUR |
 |---------------+---------+---|
 | *Total TTC*     | *2722.50* | *\EUR* |
-#+TBLFM: @1$2=vsum(remote(participants,@2$3..@>$3));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*%.2f*
+#+TBLFM: @1$2=remote(participants,@>$3);%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*%.2f*
 #+LATEX: \end{minipage}}
 
 Référence :
