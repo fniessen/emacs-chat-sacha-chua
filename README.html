@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Chat avec Sacha Chua</title>
+<meta name="author" content="Fabrice Niessen" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Emacs Chat avec Sacha Chua</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table des matières</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org01f3717">1. Présentation</a></li>
+<li><a href="#orgac19ace">2. Agenda</a></li>
+<li><a href="#org008595f">3. leuven-theme</a></li>
+<li><a href="#org01f100a">4. Emacs Leuven (EmacsBoost)</a></li>
+<li><a href="#org21d003a">5. Export vers HTML</a></li>
+<li><a href="#org4f99798">6. Export vers PDF</a></li>
+<li><a href="#org192ae74">7. Mon organisation quotidienne</a>
+<ul>
+<li><a href="#orgfbf2e19">7.1. <span class="todo TODO">TODO</span> Org mode</a></li>
+<li><a href="#orgea982d6">7.2. <span class="todo STRT">STRT</span> Suivi du temps passé</a></li>
+</ul>
+</li>
+<li><a href="#orgdfbaf02">8. Quelques astuces</a>
+<ul>
+<li><a href="#orge4c0e39">8.1. M-w sans sélectionner de région</a></li>
+<li><a href="#orgf61712b">8.2. VCS (Git)</a></li>
+<li><a href="#orgfc4a3bc">8.3. Mise à jour automatique du contenu avant enregistrement</a></li>
+<li><a href="#org782c2dc">8.4. Édition rectangle</a></li>
+<li><a href="#org0dedf41">8.5. Automatisations dans Dired</a></li>
+<li><a href="#org65edbb5">8.6. Automatisations dans Isearch</a></li>
+<li><a href="#org084d708">8.7. Autres raccourcis de productivité</a></li>
+</ul>
+</li>
+<li><a href="#org1c28a7f">9. Formations EmacsBoost</a>
+<ul>
+<li><a href="#org679bf33">9.1. Témoignages</a></li>
+</ul>
+</li>
+<li><a href="#orgdaae910">10. Merci</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org01f3717" class="outline-2">
+<h2 id="org01f3717"><span class="section-number-2">1.</span> Présentation</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Je suis consultant IT en Belgique (à Leuven ;-)) et utilisateur passionné
+d&rsquo;Emacs depuis 1999.
+</p>
+
+<p>
+Au fil des années, j&rsquo;ai développé plusieurs projets <i>open source</i> autour d&rsquo;Emacs
+et d&rsquo;Org mode, principalement pour :
+</p>
+
+<ul class="org-ul">
+<li>la personnalisation d&rsquo;Emacs ;</li>
+<li>l&rsquo;automatisation des tâches répétitives (DRY) ;</li>
+<li>la rédaction et la publication de documents techniques (vers HTML, LaTeX et
+PDF) à partir d&rsquo;une source unique (macros Org) ;</li>
+<li>la diffusion d&rsquo;Org mode à travers des <i>refcards</i> sur la syntaxe Org mode et sur
+Org Babel (<i>literate programming</i>, <i>reproducible research</i>).</li>
+</ul>
+
+<div class="tip" id="orgda210ac">
+<p>
+Aujourd&rsquo;hui, la plupart de mes outils et expérimentations sont publiés sur
+GitHub et servent également de support à mes formations EmacsBoost (et
+ShellBoost&#x2026; et GitBoost&#x2026;).
+</p>
+
+</div>
+
+<p>
+Référence : <a href="https://github.com/fniessen">https://github.com/fniessen</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgac19ace" class="outline-2">
+<h2 id="orgac19ace"><span class="section-number-2">2.</span> Agenda</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Quelques sujets que l&rsquo;on pourrait aborder :
+</p>
+
+<ul class="org-ul">
+<li>mon parcours avec Emacs ;</li>
+<li>le thème (officiel) de couleurs Leuven ;</li>
+<li>ma configuration Emacs (&laquo;&nbsp;Emacs Leuven&nbsp;&raquo;) ;</li>
+<li>org-html-themes ;</li>
+<li>boost-org-latex-toolkit ;</li>
+<li>mon organisation quotidienne ;</li>
+<li>quelques astuces et automatisations ;</li>
+<li>les formations EmacsBoost.</li>
+</ul>
+
+<p>
+Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
+</p>
+</div>
+</div>
+<div id="outline-container-org008595f" class="outline-2">
+<h2 id="org008595f"><span class="section-number-2">3.</span> leuven-theme</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Le thème <code>leuven</code> est un thème clair qui privilégie :
+</p>
+
+<ul class="org-ul">
+<li>la lisibilité ;</li>
+<li>un contraste suffisant ;</li>
+<li>des couleurs peu fatigantes ;</li>
+<li>une hiérarchie visuelle claire.</li>
+</ul>
+
+<p>
+Je l&rsquo;ai conçu pour pouvoir travailler plusieurs heures par jour sans fatigue
+visuelle.
+</p>
+
+<p>
+Référence : <a href="https://github.com/fniessen/emacs-leuven-theme">https://github.com/fniessen/emacs-leuven-theme</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org01f100a" class="outline-2">
+<h2 id="org01f100a"><span class="section-number-2">4.</span> Emacs Leuven (EmacsBoost)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Ma configuration <code>emacs-leuven</code> est l&rsquo;aboutissement de nombreuses années
+d&rsquo;utilisation quotidienne.
+</p>
+
+<p>
+L&rsquo;objectif n&rsquo;est pas de montrer &laquo;&nbsp;la meilleure configuration Emacs&nbsp;&raquo;, mais une
+configuration &laquo;&nbsp;Emacs pour humains habitués aux IDE modernes&nbsp;&raquo; :
+</p>
+
+<ul class="org-ul">
+<li>cohérente ;</li>
+<li>documentée ;</li>
+<li>facile à comprendre ;</li>
+<li>composée de plein de petites améliorations qui, mises bout à bout, changent
+vraiment l&rsquo;expérience utilisateur &#x2013; et rendent Emacs tout simplement
+indispensable.</li>
+</ul>
+
+<p>
+C&rsquo;est aussi un excellent support pédagogique pour découvrir de nombreuses
+fonctionnalités d&rsquo;Emacs.
+</p>
+
+<div class="note" id="org73952aa">
+<p>
+Depuis quelque temps, je suis progressivement en train de faire évoluer ce
+projet sous le nom <b>EmacsBoost</b>. Ce nouveau nom reflète mieux son ambition :
+proposer non seulement une configuration Emacs prête à l&rsquo;emploi, mais également
+un ensemble cohérent de configurations, d&rsquo;automatisations et d&rsquo;outils pour aider
+chacun à tirer le meilleur parti d&rsquo;Emacs.
+</p>
+
+</div>
+
+<p>
+Référence : <a href="https://github.com/fniessen/emacs-leuven">https://github.com/fniessen/emacs-leuven</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org21d003a" class="outline-2">
+<h2 id="org21d003a"><span class="section-number-2">5.</span> Export vers HTML</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<code>org-html-themes</code> est né d&rsquo;un besoin très concret : <b>produire facilement des
+exports</b> HTML Org mode qui soient directement publiables, professionnels et
+agréables à lire.
+</p>
+
+<p>
+Le projet fournit plusieurs thèmes complets (dont <b>ReadTheOrg</b> et <b>Bigblow</b>)
+ainsi que toute l&rsquo;infrastructure nécessaire pour transformer un simple document
+Org en une documentation moderne.
+</p>
+
+<p>
+Objectifs :
+</p>
+
+<ul class="org-ul">
+<li>zéro CSS à écrire ;</li>
+<li>une navigation confortable ;</li>
+<li>une excellente lisibilité ;</li>
+<li>un rendu professionnel ;</li>
+<li>une personnalisation simple.</li>
+</ul>
+
+<p>
+Référence : <a href="https://github.com/fniessen/org-html-themes">https://github.com/fniessen/org-html-themes</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org4f99798" class="outline-2">
+<h2 id="org4f99798"><span class="section-number-2">6.</span> Export vers PDF</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Références :
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/fniessen/boost-org-latex-toolkit">https://github.com/fniessen/boost-org-latex-toolkit</a></li>
+<li><a href="https://github.com/fniessen/org-macros">https://github.com/fniessen/org-macros</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org192ae74" class="outline-2">
+<h2 id="org192ae74"><span class="section-number-2">7.</span> Mon organisation quotidienne</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgfbf2e19" class="outline-3">
+<h3 id="orgfbf2e19"><span class="section-number-3">7.1.</span> <span class="todo TODO">TODO</span> Org mode</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Org mode est le centre de mon organisation.
+</p>
+
+<p>
+Je l&rsquo;utilise pour :
+</p>
+
+<ul class="org-ul">
+<li>gérer mes tâches ;</li>
+<li>prendre des notes ;</li>
+<li>préparer mes (supports de) formations ;</li>
+<li>écrire de la documentation ;</li>
+<li>suivre mes projets personnels.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgea982d6" class="outline-3">
+<h3 id="orgea982d6"><span class="section-number-3">7.2.</span> <span class="todo STRT">STRT</span> Suivi du temps passé</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Je mesure précisément le temps consacré à mes activités professionnelles grâce
+au système de <code>org-clock-in</code> / <code>org-clock-out</code>.
+</p>
+
+<p>
+Cela me permet :
+</p>
+
+<ul class="org-ul">
+<li>de retrouver facilement ce que j&rsquo;ai fait ;</li>
+<li>de produire des factures.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdfbaf02" class="outline-2">
+<h2 id="orgdfbaf02"><span class="section-number-2">8.</span> Quelques astuces</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Quelques petites choses qui font <b>gagner beaucoup de temps</b>.
+</p>
+</div>
+<div id="outline-container-orge4c0e39" class="outline-3">
+<h3 id="orge4c0e39"><span class="section-number-3">8.1.</span> M-w sans sélectionner de région</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Copier la ligne courante lorsqu&rsquo;aucune région n&rsquo;est active.
+</p>
+
+<p>
+Référence :
+<a href="https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#deletion-and-killing">https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#deletion-and-killing</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf61712b" class="outline-3">
+<h3 id="orgf61712b"><span class="section-number-3">8.2.</span> VCS (Git)</h3>
+<div class="outline-text-3" id="text-8-2">
+</div>
+<div id="outline-container-org91ca8d6" class="outline-4">
+<h4 id="org91ca8d6">EDiff</h4>
+<div class="outline-text-4" id="text-org91ca8d6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Touche</th>
+<th scope="col" class="org-left">Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>E</code></td>
+<td class="org-left"><code>vc-ediff</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Référence :
+<a href="https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#vc-directory-mode">https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#vc-directory-mode</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgae5e483" class="outline-4">
+<h4 id="orgae5e483">Messages de commit</h4>
+<div class="outline-text-4" id="text-orgae5e483">
+<p>
+Génération automatique de messages de commit par IA.
+</p>
+
+<p>
+Référence :
+<a href="https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt#git-commit-messages">https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt#git-commit-messages</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfc4a3bc" class="outline-3">
+<h3 id="orgfc4a3bc"><span class="section-number-3">8.3.</span> Mise à jour automatique du contenu avant enregistrement</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+La fonction <code>boost--org-update-generated-content-before-save</code> met automatiquement à jour
+certaines parties d&rsquo;un document avant son enregistrement.
+</p>
+
+<p>
+Cela évite les oublis et garantit que les documents restent cohérents.
+</p>
+
+<p>
+Référence :
+<a href="https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a6-dynamic-blocks">https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a6-dynamic-blocks</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org782c2dc" class="outline-3">
+<h3 id="org782c2dc"><span class="section-number-3">8.4.</span> Édition rectangle</h3>
+</div>
+
+<div id="outline-container-org0dedf41" class="outline-3">
+<h3 id="org0dedf41"><span class="section-number-3">8.5.</span> Automatisations dans Dired</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+Quelques exemples :
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Touche</th>
+<th scope="col" class="org-left">Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-x C-j</code></td>
+<td class="org-left"><code>dired-jump</code> (global)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left"><code>boost-dired-open-marked-files-externally</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org65edbb5" class="outline-3">
+<h3 id="org65edbb5"><span class="section-number-3">8.6.</span> Automatisations dans Isearch</h3>
+<div class="outline-text-3" id="text-8-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Touche</th>
+<th scope="col" class="org-left">Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-o</code></td>
+<td class="org-left"><code>helm-swoop-from-isearch</code> (lors du C-s)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Nombre de correspondances grâce à Anzu.
+</p>
+</div>
+</div>
+<div id="outline-container-org084d708" class="outline-3">
+<h3 id="org084d708"><span class="section-number-3">8.7.</span> Autres raccourcis de productivité</h3>
+<div class="outline-text-3" id="text-8-7">
+<p>
+Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
+Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
+entre fenêtres, macros clavier, gestion de versions, navigation dans les erreurs
+de compilation et gestion des buffers.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Touche</th>
+<th scope="col" class="org-left">Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f2&gt;</code></td>
+<td class="org-left"><code>save-buffer</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>&lt;f3&gt;</code></td>
+<td class="org-left"><code>find-file</code> / <code>helm-for-files</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f5&gt;</code></td>
+<td class="org-left"><code>boost-toggle-window-split</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>&lt;f6&gt;</code></td>
+<td class="org-left"><code>boost-previous-buffer-or-window</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f8&gt;</code></td>
+<td class="org-left"><code>call-last-kbd-macro</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-&lt;f8&gt;</code></td>
+<td class="org-left"><code>boost-toggle-kmacro-recording</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-&lt;f8&gt;</code></td>
+<td class="org-left"><code>kmacro-name-last-macro</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f9&gt;</code></td>
+<td class="org-left"><code>org-save-buffer-and-do-related</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-&lt;f9&gt;</code></td>
+<td class="org-left"><code>boost-vc-status-here</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f10&gt;</code></td>
+<td class="org-left"><code>next-error</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-&lt;f10&gt;</code></td>
+<td class="org-left"><code>previous-error</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-&lt;f10&gt;</code></td>
+<td class="org-left"><code>first-error</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f11&gt;</code></td>
+<td class="org-left"><code>undo-only</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-&lt;f11&gt;</code></td>
+<td class="org-left"><code>undo-redo</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>&lt;f12&gt;</code></td>
+<td class="org-left"><code>switch-to-buffer</code>  / <code>helm-mini</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-&lt;f12&gt;</code></td>
+<td class="org-left"><code>boost-kill-current-buffer</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-&lt;f12&gt;</code></td>
+<td class="org-left"><code>boost-helm-generic-imenu</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-&lt;f12&gt;</code></td>
+<td class="org-left"><code>bury-buffer</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>C-c 1</code></td>
+<td class="org-left"><code>find-name-dired</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c 2</code></td>
+<td class="org-left"><code>find-grep-dired</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-c 3</code></td>
+<td class="org-left"><code>rgrep</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>M-q</code></td>
+<td class="org-left"><code>boost-fill-paragraph-dwim</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org1c28a7f" class="outline-2">
+<h2 id="org1c28a7f"><span class="section-number-2">9.</span> Formations EmacsBoost</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+L&rsquo;objectif de mes formations est simple : transmettre toutes les fonctionnalités
+d&rsquo;Emacs que j&rsquo;utilise au quotidien, et qui me font réellement gagner du temps.
+</p>
+
+<p>
+Les formations mettent l&rsquo;accent sur :
+</p>
+
+<ul class="org-ul">
+<li>les raccourcis utiles ;</li>
+<li>Org mode ;</li>
+<li>la gestion des projets ;</li>
+<li>les automatisations ;</li>
+<li>la personnalisation ;</li>
+<li>les bonnes pratiques.</li>
+</ul>
+
+<p>
+L&rsquo;objectif est que les participants puissent appliquer immédiatement ce qu&rsquo;ils
+ont appris dès leur retour au travail.
+</p>
+
+<p>
+Référence : <a href="https://emacsboost.com">https://emacsboost.com</a>
+</p>
+</div>
+<div id="outline-container-org679bf33" class="outline-3">
+<h3 id="org679bf33"><span class="section-number-3">9.1.</span> Témoignages</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Quelques retours récurrents des participants :
+</p>
+
+<ul class="org-ul">
+<li>&laquo;&nbsp;J&rsquo;ai découvert énormément de fonctionnalités que je n&rsquo;aurais jamais trouvées
+seul.&nbsp;&raquo;</li>
+<li>&laquo;&nbsp;Le gain de productivité est immédiat.&nbsp;&raquo;</li>
+<li>&laquo;&nbsp;La formation est très concrète.&nbsp;&raquo;</li>
+<li>&laquo;&nbsp;Même après 20 ans d&rsquo;utilisation quotidienne d&rsquo;Emacs, j&rsquo;ai appris énormément.&nbsp;&raquo;</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdaae910" class="outline-2">
+<h2 id="orgdaae910"><span class="section-number-2">10.</span> Merci</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Merci pour ton intérêt !
+</p>
+
+<p>
+J&rsquo;espère que cette conversation aura été une bonne occasion d&rsquo;échanger quelques
+idées, expériences et astuces autour d&rsquo;Emacs, d&rsquo;Org mode et de l&rsquo;<i>open source</i>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026-08-13</p>
+<p class="author">Auteur: Fabrice Niessen</p>
+</div>
+</body>
+</html>
