@@ -283,7 +283,7 @@ au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 | ~S-<f8>~   | ~boost-toggle-kmacro-recording~        |
 | ~C-<f8>~   | ~kmacro-name-last-macro~               |
 |----------+--------------------------------------|
-| ~<f9>~     | ~org-save-buffer-and-do-related~       |
+| ~<f9>~     | ~boost--org-rebuild-dependent-files~   |
 | ~C-<f9>~   | ~boost-vc-status-here~                 |
 |----------+--------------------------------------|
 | ~<f10>~    | ~next-error~                           |
