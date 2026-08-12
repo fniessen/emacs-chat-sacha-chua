@@ -1,0 +1,747 @@
+% Intended LaTeX compiler: lualatex
+\documentclass{mcreport}
+% org-mc-latex-classes.el --------------------------
+% Additional LaTeX headers from #+LATEX_HEADER lines
+% ==============================================================
+% BEGIN SETUPFILE: latex-listings.setup
+%
+% Copyright (C) 2008-2026 Fabrice Niessen. All rights reserved.
+%
+% Purpose: Listings configuration for source code typesetting
+%          and syntax highlighting.
+% Scope:   LaTeX exports using the listings package;
+%          applies to Beamer and other document classes.
+% ==============================================================
+
+% Typeset source code listings.
+\usepackage{listings}
+
+% --------------------------------------------------------------
+% Colors.
+% --------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{mc@lstidentifier}{HTML}{000000} % Black.
+\definecolor{mc@lstcomment}{HTML}{008200}    % Green.
+\definecolor{mc@lststring}{HTML}{FF5500}     % Orange.
+\definecolor{mc@lstkeyword}{HTML}{0000FF}    % Blue.
+\definecolor{mc@lstbackground}{HTML}{FFFDE7} % Warm light yellow.
+\definecolor{mc@lstframe}{HTML}{F0E6A0}      % Soft yellow border.
+
+\definecolor{mc@lstgitcmd}{HTML}{0000FF}      % Blue: git, cd, ls, ...
+\definecolor{mc@lstgitsubcmd}{HTML}{008080}   % Teal: commit, log, merge, ...
+\definecolor{mc@lstgitopt}{HTML}{CC5500}      % Dark orange: graph, oneline, cached, ...
+\definecolor{mc@lstgitref}{HTML}{008200}      % Green: HEAD, origin/main, ...
+\definecolor{mc@lstgitshortopt}{HTML}{AA0000} % Dark red: a, p, v, m, am, ...
+\definecolor{mc@lstgboost}{HTML}{9900CC}      % Purple: GitBoost aliases.
+
+% Colors for diff listings.
+\definecolor{mc@diffstart}{HTML}{666666}   % Gray.
+\definecolor{mc@diffadded}{HTML}{008200}   % Green.
+\definecolor{mc@diffremoved}{HTML}{CC0000} % Red.
+
+\definecolor{TeXbackgroundcolor}{HTML}{F1F9EF} % Very light green.
+\definecolor{TeXrulecolor}{HTML}{D4E8E3}       % Pale green.
+
+\definecolor{mc@examplebackground}{HTML}{EAF7EA} % Very light green.
+\definecolor{mc@exampleframe}{HTML}{A8D5A8}      % Light green.
+
+% --------------------------------------------------------------
+% Languages.
+% --------------------------------------------------------------
+% Diff language for listings.
+\lstdefinelanguage{diff}{%
+morecomment=[f][\color{mc@diffstart}]{@@},% Hunk headers.
+morecomment=[f][\color{mc@diffremoved}]-,% Removed lines.
+morecomment=[f][\color{mc@diffadded}]+,% Added lines.
+morecomment=[f][\color{mc@diffstart}]{---},% File headers (old).
+morecomment=[f][\color{mc@diffstart}]{+++},% File headers (new).
+}
+
+% Plain text language for listings.
+\lstdefinelanguage{text}{}
+
+% Archibus log language for listings.
+\lstdefinelanguage{ablog}{}
+
+\lstdefinelanguage{conf}{
+morecomment=[l]{\#},
+morecomment=[l]{;},
+morestring=[b]",
+morestring=[b]',
+sensitive=true
+}
+
+\lstdefinelanguage{org}{%
+morekeywords={:exports, :noweb, :results, :session, :var},
+sensitive=false,
+morestring=[b]",
+morecomment=[l]{\#},
+}
+
+% Shell commands with Git-aware highlighting.
+\lstdefinelanguage{shell}{
+% Generic shell commands and local command aliases.
+morekeywords={
+alias,apt,cat,cd,cp,echo,export,g,git,grep,
+ls,mkdir,mv,pwd,rm,smerge,sudo,touch,wget
+},
+% Git subcommands and common Unix commands used in Git examples.
+morekeywords=[2]{
+add,apply,bad,bisect,blame,branch,checkout,cherry-pick,
+clean,clone,commit,config,diff,difftool,fetch,good,head,
+init,install,log,ls-files,merge,mergetool,pop,pull,push,
+rebase,reflog,remote,reset,restore,revert,run,show,start,
+stash,status,switch,tag,tail,xargs,zip
+},
+% Git long options without their leading dashes.
+morekeywords=[3]{
+abort,abbrev-commit,all,amend,autostash,cached,color-words,
+continue,decorate,follow,force-with-lease,global,graph,
+hard,keep,list,mixed,name-only,oneline,pretty,prune,rebase,
+soft,sort,source,staged,stat,tags,track,word-diff-regex,
+worktree
+},
+% Common Git references, remotes and branch names.
+morekeywords=[4]{
+FETCH_HEAD,HEAD,MERGE_HEAD,ORIG_HEAD,main,master,origin,
+origin/main,origin/master
+},
+% Common short options without their leading dash.
+morekeywords=[5]{
+I,a,am,av,b,d,i,l,m,p,s,v,vv
+},
+% GitBoost aliases.
+morekeywords=[6]{
+% A
+ack,
+aliases,
+all-repos,
+amend-message,
+amend-reuse,
+% B
+br,
+branches,
+branches-containing,
+% C
+changed-files,
+co,
+common-ancestor,
+commit-interactive,
+create-branch,
+current-branch,
+% D
+delete-gone-branches,
+delete-remote-branch,
+df,
+dfc,
+dt,
+dtc,
+% F
+file-history,
+file-history-all-branches,
+file-last-commit-all-local-branches,
+find-commit-diffs-all-branches,
+find-commit-messages-all,
+find-commit-messages-any,
+% G
+gno,
+grep-aliases,
+grep-all-commits,
+grep-all-local-branches,
+grep-all-tracked-files,
+grep-current-branch,
+% I
+ignore,
+in,
+incoming,
+init-repository,
+% L
+lg-all-branches,
+ll,
+lll,
+local-commit,
+log-unified-diff,
+ls,
+% M
+merge-test,
+mindf,
+mindfc,
+minshow,
+missing,
+% N
+no-ff,
+% O
+out,
+outgoing,
+% P
+publish-branch,
+pull-autostash,
+% R
+r,
+record,
+recommit,
+related-files,
+release-tag,
+releases,
+rename-branch,
+rename-local-branch,
+reword,
+% S
+search-for-code,
+squash,
+st,
+stash-all,
+stash-only-untracked,
+% U
+unadd,
+uncommit,
+uncommit-unadd,
+uncommit-unstage,
+unmodify,
+unstage,
+upstream-commit,
+% W
+wdf,
+wdfc,
+whoami,
+wshow,
+wwflu
+},
+keywordstyle=[1]\color{mc@lstgitcmd}\bfseries,
+keywordstyle=[2]\color{mc@lstgitcmd}\bfseries,
+keywordstyle=[3]\color{mc@lstgitopt},
+keywordstyle=[4]\color{mc@lstgitref}\bfseries,
+keywordstyle=[5]\color{mc@lstgitshortopt}\bfseries,
+keywordstyle=[6]\color{mc@lstgboost}\bfseries,
+%
+% Treat lines starting with '#' as shell comments.
+morecomment=[l]{\#},
+%
+% Treat '.' and '/' as part of identifiers so compound Git names
+% such as feature/login and path-like references are highlighted
+% as single keywords.
+%
+% The '-' character is intentionally excluded. Including it in
+% alsoletter would cause options beginning with '-' (for example
+% -a, --all, --graph or --force-with-lease) to be parsed as part
+% of larger identifiers and prevent correct option highlighting.
+alsoletter={./},
+sensitive=true,
+}
+
+% --------------------------------------------------------------
+% Styles.
+% --------------------------------------------------------------
+\lstdefinestyle{TeX}{
+backgroundcolor=\color{TeXbackgroundcolor},
+rulecolor=\color{TeXrulecolor}
+}
+
+\lstdefinestyle{example}{
+language=shell, % text
+backgroundcolor={},
+}
+
+% --------------------------------------------------------------
+% Accessibility.
+% Hide line numbers from copy/paste operations in PDF output.
+% --------------------------------------------------------------
+\usepackage{accsupp}
+
+\newcommand{\emptyaccsupp}[1]{%
+\BeginAccSupp{ActualText={}}#1\EndAccSupp{}%
+}
+
+\definecolor{mc@lstlinenumber}{gray}{0.75}
+
+\newcommand{\lstnumberstyle}{%
+\color{mc@lstlinenumber}%
+\tiny\ttfamily\emptyaccsupp
+}
+
+% --------------------------------------------------------------
+% Global listings defaults.
+% --------------------------------------------------------------
+\lstset{%
+lineskip=-0.1em,
+%
+basicstyle=\ttfamily\scriptsize, % Font used for code.
+identifierstyle=\color{mc@lstidentifier},
+commentstyle=\color{mc@lstcomment}\itshape,
+stringstyle=\color{mc@lststring},
+keywordstyle=\color{mc@lstkeyword},
+%
+upquote,
+tabsize=4, % Set the default tab size to 4 spaces.
+showtabs=false, % Show tabs within strings using underscores.
+%  tab=$\to$,
+showspaces=false, % Show spaces using underscores.
+showstringspaces=false, % Underline spaces within strings.
+%
+numbers=left, % Position of line numbers.
+numberstyle=\lstnumberstyle, % Line number style.
+%
+captionpos=b, % Place captions below listings.
+%
+xleftmargin=0.4em, % Text to the right.
+xrightmargin=0.4em, % Text to the left.
+breaklines=true, % Visually wrap long listing lines when possible.
+breakatwhitespace=true, % Prefer whitespace as a visual wrap point.
+%
+frame=single, % Draw a frame around listings.
+framexleftmargin=0pt, % Left frame margin.
+framexrightmargin=0pt, % Right frame margin.
+backgroundcolor=\color{mc@lstbackground}, % Background color.
+rulecolor=\color{mc@lstframe}, % Frame color.
+%
+columns=flexible, % Use flexible character widths instead of fixed columns.
+keepspaces=true, % Preserve consecutive spaces and indentation.
+%
+% mathescape, % Allow escaping to (La)TeX mode within $..$.
+%
+% Display placeholders between ⟨ and ⟩, in italic and in a specific color.
+moredelim={[s][\itshape\color{brown}]{⟨}{⟩}},
+}
+
+% --------------------------------------------------------------
+% Unicode support for listings.
+% --------------------------------------------------------------
+% Extend listings' internal character table to recognize Unicode
+% code points above 255. This allows characters such as ⟨, ⟩ and
+% horizontal ellipsis to be processed correctly when using
+% modern Unicode engines (LuaLaTeX and XeLaTeX).
+\makeatletter
+\lst@InputCatcodes
+\def\lst@DefEC{%
+\lst@CCECUse \lst@ProcessLetter
+^^80^^81^^82^^83^^84^^85^^86^^87^^88^^89^^8a^^8b^^8c^^8d^^8e^^8f%
+^^90^^91^^92^^93^^94^^95^^96^^97^^98^^99^^9a^^9b^^9c^^9d^^9e^^9f%
+^^a0^^a1^^a2^^a3^^a4^^a5^^a6^^a7^^a8^^a9^^aa^^ab^^ac^^ad^^ae^^af%
+^^b0^^b1^^b2^^b3^^b4^^b5^^b6^^b7^^b8^^b9^^ba^^bb^^bc^^bd^^be^^bf%
+^^c0^^c1^^c2^^c3^^c4^^c5^^c6^^c7^^c8^^c9^^ca^^cb^^cc^^cd^^ce^^cf%
+^^d0^^d1^^d2^^d3^^d4^^d5^^d6^^d7^^d8^^d9^^da^^db^^dc^^dd^^de^^df%
+^^e0^^e1^^e2^^e3^^e4^^e5^^e6^^e7^^e8^^e9^^ea^^eb^^ec^^ed^^ee^^ef%
+^^f0^^f1^^f2^^f3^^f4^^f5^^f6^^f7^^f8^^f9^^fa^^fb^^fc^^fd^^fe^^ff%
+% Additional Unicode characters.
+^^^^20ac^^^^0153^^^^0152% €, œ, Œ
+^^^^2194% Left-right arrow.
+^^^^27e8% Left angle bracket.
+^^^^27e9% Right angle bracket.
+^^^^2026% Horizontal ellipsis.
+^^00}
+\lst@RestoreCatcodes
+\makeatother
+
+% --------------------------------------------------------------
+% Inline command boxes.
+% Used by Org macros ikbd and kbd.
+% Requires: listings and tcolorbox.
+% --------------------------------------------------------------
+\usepackage{tcolorbox}
+
+\tcbset{
+commandboxstyle/.style={
+on line,
+nobeforeafter,
+boxsep=1pt,
+left=2pt,
+right=2pt,
+top=1pt,
+bottom=1pt,
+colback=black!10
+}
+}
+
+\NewTotalTCBox{\commandbox}{ s O{} m }
+{commandboxstyle, boxrule=0.3pt, colframe=black!45}
+{%
+\IfBooleanT{#1}{\textcolor{red}{\ttfamily\bfseries \$ }}%
+\lstinline[language=shell,#2]§#3§%
+}
+
+\NewTotalTCBox{\lightcommandbox}{ s O{} m }
+{commandboxstyle, boxrule=0pt, colframe=black!10}
+{%
+\IfBooleanT{#1}{\textcolor{red}{\ttfamily\bfseries \$ }}%
+\lstinline[language=shell,#2]§#3§%
+}
+
+% --------------------------------------------------------------
+% Terminal sessions.
+% Requires: listings, tcolorbox and accsupp.
+% --------------------------------------------------------------
+% Style used for shell sessions displayed in a terminal-like box.
+\lstdefinestyle{terminal}{
+language=shell, % text
+backgroundcolor=,
+frame=none,
+numbers=none,
+basicstyle=\scriptsize\ttfamily,
+moredelim={[s][\itshape\color{brown}]{⟨}{⟩}},
+}
+
+% Prompt displayed at the beginning of each command line.
+\newcommand{\terminalprompt}{%
+\bfseries%
+% \textcolor{cyan}{alice\textcolor{gray}{@}ubuntu}%
+% \textcolor{gray}{:}%
+% \textcolor{lime!50!black}{\~{}}%
+\textcolor{red!50}{\$}%
+}
+
+\tcbuselibrary{listings}
+
+% Terminal environment used by Org's #+begin_terminal blocks.
+\lstnewenvironment{terminal}[1][]
+{%
+\lstset{%
+language=shell,
+style=terminal,
+basicstyle=\ttfamily\scriptsize,
+moredelim={[l][\color{black}]{\#\#}},
+escapeinside=£\ ,
+escapebegin=\BeginAccSupp{ActualText={}}\pause{}\terminalprompt\EndAccSupp{},
+escapeend=\BeginAccSupp{ActualText={}}\ \EndAccSupp{},
+backgroundcolor=\color{violet!10!white},
+rulecolor=\color{gray!65!black},
+#1
+}%
+}
+{}
+
+% ==============================================================
+% END SETUPFILE: latex-listings.setup
+% ==============================================================
+% ==============================================================
+% BEGIN SETUPFILE: latex-admonitions.setup
+% Purpose: Read the Docs-style admonition and task boxes
+% Scope: LaTeX exports using standard classes and Beamer
+% ==============================================================
+% Read the Docs-style admonition and callout boxes.
+\usepackage{boostboxes}
+% ==============================================================
+% END SETUPFILE: latex-admonitions.setup
+% ==============================================================
+
+% End of org-mc-latex-classes.el -------------------
+\setcounter{secnumdepth}{2}
+\author{Fabrice Niessen}
+\date{2026-08-13}
+\title{Emacs Chat avec Sacha Chua}
+\hypersetup{
+ pdfauthor={Fabrice Niessen},
+ pdftitle={Emacs Chat avec Sacha Chua},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={French}}
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\chapter{Présentation}
+\label{sec:org35fe1a2}
+
+Je suis consultant IT en Belgique (à Leuven ;-)) et utilisateur passionné
+d'Emacs depuis 1999.
+
+Au fil des années, j'ai développé plusieurs projets \emph{open source} autour d'Emacs
+et d'Org mode, principalement pour :
+
+\begin{itemize}
+\item la personnalisation d'Emacs ;
+\item l'automatisation des tâches répétitives (DRY) ;
+\item la rédaction et la publication de documents techniques (vers HTML, \LaTeX{} et
+PDF) à partir d'une source unique (macros Org) ;
+\item la diffusion d'Org mode à travers des \emph{refcards} sur la syntaxe Org mode et sur
+Org Babel (\emph{literate programming}, \emph{reproducible research}).
+\end{itemize}
+
+\begin{tip}
+Aujourd'hui, la plupart de mes outils et expérimentations sont publiés sur
+GitHub et servent également de support à mes formations EmacsBoost (et
+ShellBoost\ldots{} et GitBoost\ldots{}).
+\end{tip}
+
+Référence : \url{https://github.com/fniessen}
+\chapter{Agenda}
+\label{sec:org50ddfb3}
+
+Quelques sujets que l'on pourrait aborder :
+
+\begin{itemize}
+\item mon parcours avec Emacs ;
+\item le thème (officiel) de couleurs Leuven ;
+\item ma configuration Emacs (\og Emacs Leuven\fg{}) ;
+\item org-html-themes ;
+\item boost-org-latex-toolkit ;
+\item mon organisation quotidienne ;
+\item quelques astuces et automatisations ;
+\item les formations EmacsBoost.
+\end{itemize}
+
+Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
+\chapter{leuven-theme}
+\label{sec:org6244b64}
+
+Le thème \verb|leuven| est un thème clair qui privilégie :
+
+\begin{itemize}
+\item la lisibilité ;
+\item un contraste suffisant ;
+\item des couleurs peu fatigantes ;
+\item une hiérarchie visuelle claire.
+\end{itemize}
+
+Je l'ai conçu pour pouvoir travailler plusieurs heures par jour sans fatigue
+visuelle.
+
+Référence : \url{https://github.com/fniessen/emacs-leuven-theme}
+\chapter{Emacs Leuven (EmacsBoost)}
+\label{sec:org138d161}
+
+Ma configuration \verb|emacs-leuven| est l'aboutissement de nombreuses années
+d'utilisation quotidienne.
+
+L'objectif n'est pas de montrer \og la meilleure configuration Emacs\fg{}, mais une
+configuration \og Emacs pour humains habitués aux IDE modernes\fg{} :
+
+\begin{itemize}
+\item cohérente ;
+\item documentée ;
+\item facile à comprendre ;
+\item composée de plein de petites améliorations qui, mises bout à bout, changent
+vraiment l'expérience utilisateur -- et rendent Emacs tout simplement
+indispensable.
+\end{itemize}
+
+C'est aussi un excellent support pédagogique pour découvrir de nombreuses
+fonctionnalités d'Emacs.
+
+\begin{note}
+Depuis quelque temps, je suis progressivement en train de faire évoluer ce
+projet sous le nom \textbf{EmacsBoost}. Ce nouveau nom reflète mieux son ambition :
+proposer non seulement une configuration Emacs prête à l'emploi, mais également
+un ensemble cohérent de configurations, d'automatisations et d'outils pour aider
+chacun à tirer le meilleur parti d'Emacs.
+\end{note}
+
+Référence : \url{https://github.com/fniessen/emacs-leuven}
+\chapter{Export vers HTML}
+\label{sec:orgf586fce}
+
+\verb|org-html-themes| est né d'un besoin très concret : \textbf{produire facilement des
+exports} HTML Org mode qui soient directement publiables, professionnels et
+agréables à lire.
+
+Le projet fournit plusieurs thèmes complets (dont \textbf{ReadTheOrg} et \textbf{Bigblow})
+ainsi que toute l'infrastructure nécessaire pour transformer un simple document
+Org en une documentation moderne.
+
+Objectifs :
+
+\begin{itemize}
+\item zéro CSS à écrire ;
+\item une navigation confortable ;
+\item une excellente lisibilité ;
+\item un rendu professionnel ;
+\item une personnalisation simple.
+\end{itemize}
+
+Référence : \url{https://github.com/fniessen/org-html-themes}
+\chapter{Export vers PDF}
+\label{sec:org8bec511}
+
+Références :
+\begin{itemize}
+\item \url{https://github.com/fniessen/boost-org-latex-toolkit}
+\item \url{https://github.com/fniessen/org-macros}
+\end{itemize}
+\chapter{Mon organisation quotidienne}
+\label{sec:org1975613}
+
+\section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{TODO}}}}}{TODO} Org mode}
+\label{sec:org1812b0a}
+
+Org mode est le centre de mon organisation.
+
+Je l'utilise pour :
+
+\begin{itemize}
+\item gérer mes tâches ;
+\item prendre des notes ;
+\item préparer mes (supports de) formations ;
+\item écrire de la documentation ;
+\item suivre mes projets personnels.
+\end{itemize}
+\section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{STRT}}}}}{STRT} Suivi du temps passé}
+\label{sec:org7918b54}
+
+Je mesure précisément le temps consacré à mes activités professionnelles grâce
+au système de \verb|org-clock-in| / \verb|org-clock-out|.
+
+Cela me permet :
+
+\begin{itemize}
+\item de retrouver facilement ce que j'ai fait ;
+\item de produire des factures.
+\end{itemize}
+\chapter{Quelques astuces}
+\label{sec:orga1ceffe}
+
+Quelques petites choses qui font \textbf{gagner beaucoup de temps}.
+\section{M-w sans sélectionner de région}
+\label{sec:orgac62712}
+
+Copier la ligne courante lorsqu'aucune région n'est active.
+
+Référence :
+\url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#deletion-and-killing}
+\section{VCS (Git)}
+\label{sec:orgae5e629}
+
+\subsection*{EDiff}
+\label{sec:org2c9e8ea}
+
+\begin{center}
+\begin{tabular}{ll}
+Touche & Commande\\
+\hline
+\lstinline|E| & \lstinline|vc-ediff|\\
+\end{tabular}
+\end{center}
+
+Référence :
+\url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#vc-directory-mode}
+\subsection*{Messages de commit}
+\label{sec:orgdfb3d47}
+
+Génération automatique de messages de commit par IA.
+
+Référence :
+\url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt\#git-commit-messages}
+\section{Mise à jour automatique du contenu avant enregistrement}
+\label{sec:org25fe761}
+
+La fonction \verb|boost--org-update-generated-content-before-save| met automatiquement à jour
+certaines parties d'un document avant son enregistrement.
+
+Cela évite les oublis et garantit que les documents restent cohérents.
+
+Référence :
+\url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt\#a6-dynamic-blocks}
+\section{Édition rectangle}
+\label{sec:org7952767}
+
+\section{Automatisations dans Dired}
+\label{sec:orgca7b746}
+
+Quelques exemples :
+
+\begin{center}
+\begin{tabular}{ll}
+Touche & Commande\\
+\hline
+\lstinline|C-x C-j| & \lstinline|dired-jump| (global)\\
+\lstinline|o| & \lstinline|boost-dired-open-marked-files-externally|\\
+\end{tabular}
+\end{center}
+\section{Automatisations dans Isearch}
+\label{sec:org1b336e2}
+
+\begin{center}
+\begin{tabular}{ll}
+Touche & Commande\\
+\hline
+\lstinline|C-o| & \lstinline|helm-swoop-from-isearch| (lors du C-s)\\
+\end{tabular}
+\end{center}
+
+Nombre de correspondances grâce à Anzu.
+\section{Autres raccourcis de productivité}
+\label{sec:orgf08d90d}
+
+Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
+Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
+entre fenêtres, macros clavier, gestion de versions, navigation dans les erreurs
+de compilation et gestion des buffers.
+
+\begin{center}
+\begin{tabular}{ll}
+Touche & Commande\\
+\hline
+\lstinline|<f2>| & \lstinline|save-buffer|\\
+\lstinline|<f3>| & \lstinline|find-file| / \lstinline|helm-for-files|\\
+\hline
+\lstinline|<f5>| & \lstinline|boost-toggle-window-split|\\
+\lstinline|<f6>| & \lstinline|boost-previous-buffer-or-window|\\
+\hline
+\lstinline|<f8>| & \lstinline|call-last-kbd-macro|\\
+\lstinline|S-<f8>| & \lstinline|boost-toggle-kmacro-recording|\\
+\lstinline|C-<f8>| & \lstinline|kmacro-name-last-macro|\\
+\hline
+\lstinline|<f9>| & \lstinline|org-save-buffer-and-do-related|\\
+\lstinline|C-<f9>| & \lstinline|boost-vc-status-here|\\
+\hline
+\lstinline|<f10>| & \lstinline|next-error|\\
+\lstinline|S-<f10>| & \lstinline|previous-error|\\
+\lstinline|C-<f10>| & \lstinline|first-error|\\
+\hline
+\lstinline|<f11>| & \lstinline|undo-only|\\
+\lstinline|S-<f11>| & \lstinline|undo-redo|\\
+\hline
+\lstinline|<f12>| & \lstinline|switch-to-buffer|  / \lstinline|helm-mini|\\
+\lstinline|S-<f12>| & \lstinline|boost-kill-current-buffer|\\
+\lstinline|C-<f12>| & \lstinline|boost-helm-generic-imenu|\\
+\lstinline|M-<f12>| & \lstinline|bury-buffer|\\
+\hline
+\lstinline|C-c 1| & \lstinline|find-name-dired|\\
+\lstinline|C-c 2| & \lstinline|find-grep-dired|\\
+\lstinline|C-c 3| & \lstinline|rgrep|\\
+\hline
+\lstinline|M-q| & \lstinline|boost-fill-paragraph-dwim|\\
+\end{tabular}
+\end{center}
+\chapter{Formations EmacsBoost}
+\label{sec:org3d940d8}
+
+L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
+d'Emacs que j'utilise au quotidien, et qui me font réellement gagner du temps.
+
+Les formations mettent l'accent sur :
+
+\begin{itemize}
+\item les raccourcis utiles ;
+\item Org mode ;
+\item la gestion des projets ;
+\item les automatisations ;
+\item la personnalisation ;
+\item les bonnes pratiques.
+\end{itemize}
+
+L'objectif est que les participants puissent appliquer immédiatement ce qu'ils
+ont appris dès leur retour au travail.
+
+Référence : \url{https://emacsboost.com}
+\section{Témoignages}
+\label{sec:org6e7093f}
+
+Quelques retours récurrents des participants :
+
+\begin{itemize}
+\item \og J'ai découvert énormément de fonctionnalités que je n'aurais jamais trouvées
+seul.\fg{}
+\item \og Le gain de productivité est immédiat.\fg{}
+\item \og La formation est très concrète.\fg{}
+\item \og Même après 20 ans d'utilisation quotidienne d'Emacs, j'ai appris énormément.\fg{}
+\end{itemize}
+\chapter{Merci}
+\label{sec:org4e69cf3}
+
+Merci pour ton intérêt !
+
+J'espère que cette conversation aura été une bonne occasion d'échanger quelques
+idées, expériences et astuces autour d'Emacs, d'Org mode et de l'\emph{open source}.
+\end{document}
