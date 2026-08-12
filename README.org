@@ -239,6 +239,8 @@ de compilation et gestion des buffers.
 | ~C-c 3~   | ~rgrep~                           |
 |---------+---------------------------------|
 | ~M-q~     | ~boost-fill-paragraph-dwim~       |
+|---------+---------------------------------|
+| ~M-S-a~   | ~boost-reveal-hidden-text~        |
 
 * Formations EmacsBoost
 
