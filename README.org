@@ -248,7 +248,7 @@ au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 |----------+--------------------------------------|
 | ~M-q~      | ~boost-fill-paragraph-dwim~            |
 |----------+--------------------------------------|
-| ~M-S-a~    | ~boost-reveal-hidden-text~             |
+| ~M-S-a~    | ~boost-show-hidden-text~               |
 
 * Formations EmacsBoost
 
