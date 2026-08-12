@@ -311,16 +311,18 @@ au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 Quelques commandes permettent d'établir un pont pratique entre Emacs et le
 terminal.
 
-- ~e~ :: Ouvrir un fichier dans l'instance Emacs en cours à l'aide de =emacsclient=.
+- ~e~ pour ouvrir un fichier (ou un répertoire) dans l'instance Emacs en cours
+  à l'aide de =emacsclient= :
 
   #+begin_src shell
   alias e='emacsclient -n -a emacs'
   #+end_src
 
-- ~cate~ :: Afficher dans le terminal le contenu du buffer actuellement actif dans
-  Emacs.
+- ~cate~ pour afficher dans le terminal le contenu du buffer actuellement actif
+  dans Emacs.
 
-- ~cde~ :: Se placer dans le répertoire du fichier actuellement ouvert dans Emacs.
+- ~cde~ pour se placer dans le répertoire du fichier actuellement ouvert dans
+  Emacs.
 
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#shell-utilities
