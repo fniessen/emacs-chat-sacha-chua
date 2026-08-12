@@ -442,7 +442,7 @@ rulecolor=\color{gray!65!black},
 \tableofcontents
 
 \chapter{Présentation}
-\label{sec:org35fe1a2}
+\label{sec:org2eb89dc}
 
 Je suis consultant IT en Belgique (à Leuven ;-)) et utilisateur passionné
 d'Emacs depuis 1999.
@@ -467,24 +467,24 @@ ShellBoost\ldots{} et GitBoost\ldots{}).
 
 Référence : \url{https://github.com/fniessen}
 \chapter{Agenda}
-\label{sec:org50ddfb3}
+\label{sec:org9594aa1}
 
 Quelques sujets que l'on pourrait aborder :
 
 \begin{itemize}
 \item mon parcours avec Emacs ;
-\item le thème (officiel) de couleurs Leuven ;
-\item ma configuration Emacs (\og Emacs Leuven\fg{}) ;
-\item org-html-themes ;
-\item boost-org-latex-toolkit ;
-\item mon organisation quotidienne ;
-\item quelques astuces et automatisations ;
-\item les formations EmacsBoost.
+\item le thème (officiel) de couleurs \hyperref[sec:org9f5ae3d]{Leuven} ;
+\item ma configuration Emacs (\og \hyperref[sec:org11a57b3]{Emacs Leuven}\fg{}) ;
+\item \hyperref[sec:org973ae49]{org-html-themes} ;
+\item \hyperref[sec:orgac839ac]{boost-org-latex-toolkit} ;
+\item \hyperref[sec:orgfb8d79d]{mon organisation quotidienne} ;
+\item \hyperref[sec:org1b95bad]{quelques astuces} et automatisations ;
+\item les \hyperref[sec:org4c47529]{formations EmacsBoost}.
 \end{itemize}
 
 Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
 \chapter{leuven-theme}
-\label{sec:org6244b64}
+\label{sec:org9f5ae3d}
 
 Le thème \verb|leuven| est un thème clair qui privilégie :
 
@@ -500,7 +500,7 @@ visuelle.
 
 Référence : \url{https://github.com/fniessen/emacs-leuven-theme}
 \chapter{Emacs Leuven (EmacsBoost)}
-\label{sec:org138d161}
+\label{sec:org11a57b3}
 
 Ma configuration \verb|emacs-leuven| est l'aboutissement de nombreuses années
 d'utilisation quotidienne.
@@ -530,7 +530,7 @@ chacun à tirer le meilleur parti d'Emacs.
 
 Référence : \url{https://github.com/fniessen/emacs-leuven}
 \chapter{Export vers HTML}
-\label{sec:orgf586fce}
+\label{sec:org973ae49}
 
 \verb|org-html-themes| est né d'un besoin très concret : \textbf{produire facilement des
 exports} HTML Org mode qui soient directement publiables, professionnels et
@@ -552,7 +552,7 @@ Objectifs :
 
 Référence : \url{https://github.com/fniessen/org-html-themes}
 \chapter{Export vers PDF}
-\label{sec:org8bec511}
+\label{sec:orgac839ac}
 
 Références :
 \begin{itemize}
@@ -560,10 +560,10 @@ Références :
 \item \url{https://github.com/fniessen/org-macros}
 \end{itemize}
 \chapter{Mon organisation quotidienne}
-\label{sec:org1975613}
+\label{sec:orgfb8d79d}
 
 \section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{TODO}}}}}{TODO} Org mode}
-\label{sec:org1812b0a}
+\label{sec:org4534e5b}
 
 Org mode est le centre de mon organisation.
 
@@ -577,7 +577,7 @@ Je l'utilise pour :
 \item suivre mes projets personnels.
 \end{itemize}
 \section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{STRT}}}}}{STRT} Suivi du temps passé}
-\label{sec:org7918b54}
+\label{sec:orgcc713b9}
 
 Je mesure précisément le temps consacré à mes activités professionnelles grâce
 au système de \verb|org-clock-in| / \verb|org-clock-out|.
@@ -589,21 +589,21 @@ Cela me permet :
 \item de produire des factures.
 \end{itemize}
 \chapter{Quelques astuces}
-\label{sec:orga1ceffe}
+\label{sec:org1b95bad}
 
 Quelques petites choses qui font \textbf{gagner beaucoup de temps}.
-\section{M-w sans sélectionner de région}
-\label{sec:orgac62712}
+\section{C-w / M-w sans sélectionner de région}
+\label{sec:org08abafb}
 
-Copier la ligne courante lorsqu'aucune région n'est active.
+Couper ou copier la ligne courante lorsqu'aucune région n'est active.
 
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#deletion-and-killing}
 \section{VCS (Git)}
-\label{sec:orgae5e629}
+\label{sec:org6af2ba0}
 
 \subsection*{EDiff}
-\label{sec:org2c9e8ea}
+\label{sec:orgcd6a39d}
 
 \begin{center}
 \begin{tabular}{ll}
@@ -616,14 +616,14 @@ Touche & Commande\\
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#vc-directory-mode}
 \subsection*{Messages de commit}
-\label{sec:orgdfb3d47}
+\label{sec:orgdb229c2}
 
 Génération automatique de messages de commit par IA.
 
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt\#git-commit-messages}
 \section{Mise à jour automatique du contenu avant enregistrement}
-\label{sec:org25fe761}
+\label{sec:org8d53855}
 
 La fonction \verb|boost--org-update-generated-content-before-save| met automatiquement à jour
 certaines parties d'un document avant son enregistrement.
@@ -633,10 +633,10 @@ Cela évite les oublis et garantit que les documents restent cohérents.
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt\#a6-dynamic-blocks}
 \section{Édition rectangle}
-\label{sec:org7952767}
+\label{sec:org755857c}
 
 \section{Automatisations dans Dired}
-\label{sec:orgca7b746}
+\label{sec:org47379de}
 
 Quelques exemples :
 
@@ -649,7 +649,7 @@ Touche & Commande\\
 \end{tabular}
 \end{center}
 \section{Automatisations dans Isearch}
-\label{sec:org1b336e2}
+\label{sec:org98cb7df}
 
 \begin{center}
 \begin{tabular}{ll}
@@ -661,7 +661,7 @@ Touche & Commande\\
 
 Nombre de correspondances grâce à Anzu.
 \section{Autres raccourcis de productivité}
-\label{sec:orgf08d90d}
+\label{sec:org954fad2}
 
 Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
 Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
@@ -705,7 +705,7 @@ Touche & Commande\\
 \end{tabular}
 \end{center}
 \chapter{Formations EmacsBoost}
-\label{sec:org3d940d8}
+\label{sec:org4c47529}
 
 L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
 d'Emacs que j'utilise au quotidien, et qui me font réellement gagner du temps.
@@ -726,7 +726,7 @@ ont appris dès leur retour au travail.
 
 Référence : \url{https://emacsboost.com}
 \section{Témoignages}
-\label{sec:org6e7093f}
+\label{sec:orgf03a600}
 
 Quelques retours récurrents des participants :
 
@@ -738,7 +738,7 @@ seul.\fg{}
 \item \og Même après 20 ans d'utilisation quotidienne d'Emacs, j'ai appris énormément.\fg{}
 \end{itemize}
 \chapter{Merci}
-\label{sec:org4e69cf3}
+\label{sec:orgd9c79f0}
 
 Merci pour ton intérêt !
 

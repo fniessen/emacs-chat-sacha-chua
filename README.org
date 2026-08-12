@@ -40,13 +40,13 @@ Référence : https://github.com/fniessen
 Quelques sujets que l'on pourrait aborder :
 
 - mon parcours avec Emacs ;
-- le thème (officiel) de couleurs Leuven ;
-- ma configuration Emacs ("Emacs Leuven") ;
-- org-html-themes ;
-- boost-org-latex-toolkit ;
-- mon organisation quotidienne ;
-- quelques astuces et automatisations ;
-- les formations EmacsBoost.
+- le thème (officiel) de couleurs [[*leuven-theme][Leuven]] ;
+- ma configuration Emacs ("[[*Emacs Leuven (EmacsBoost)][Emacs Leuven]]") ;
+- [[*Export vers HTML][org-html-themes]] ;
+- [[*Export vers PDF][boost-org-latex-toolkit]] ;
+- [[*Mon organisation quotidienne][mon organisation quotidienne]] ;
+- [[*Quelques astuces][quelques astuces]] et automatisations ;
+- les [[*Formations EmacsBoost][formations EmacsBoost]].
 
 Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
 
@@ -146,9 +146,9 @@ Cela me permet :
 
 Quelques petites choses qui font *gagner beaucoup de temps*.
 
-** M-w sans sélectionner de région
+** C-w / M-w sans sélectionner de région
 
-Copier la ligne courante lorsqu'aucune région n'est active.
+Couper ou copier la ligne courante lorsqu'aucune région n'est active.
 
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#deletion-and-killing
@@ -200,7 +200,7 @@ Quelques exemples :
 
 Nombre de correspondances grâce à Anzu.
 
-** Raccourcis de productivité
+** Autres raccourcis de productivité
 
 Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
 Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
