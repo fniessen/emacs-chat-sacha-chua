@@ -180,7 +180,8 @@ La fonction =boost--org-update-generated-content-before-save= met automatiquemen
 recalcule les blocs dynamiques et les tables, et réaligne les tags.
 
 Cela évite les oublis et garantit que
-{{{hl(les données dérivées restent synchronisées avec leur source)}}}.
+{{{hl(les données dérivées restent synchronisées avec leur source)}}}. \\
+/Hey user, this is an Org macro.../
 
 {{{clearpage}}}
 
@@ -218,8 +219,7 @@ https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a
 
 L'édition rectangle est l'une de ces fonctionnalités méconnues d'Emacs qui
 deviennent rapidement indispensables dès que l'on manipule du texte
-structuré. Elle fait gagner énormément de temps lorsqu'on travaille
-quotidiennement avec du texte semi-structuré.
+semi-structuré -- elle fait gagner énormément de temps.
 
 Elle permet de sélectionner et de modifier (couper, copier, effacer ou
 remplacer) une zone *rectangulaire* de texte.
