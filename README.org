@@ -171,7 +171,7 @@ Génération automatique de messages de commit par IA.
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt#git-commit-messages
 
-** Génération automatique de contenu
+** Mise à jour automatique du contenu avant enregistrement
 
 La fonction =boost--org-update-generated-content-before-save= met automatiquement à jour
 certaines parties d'un document avant son enregistrement.
