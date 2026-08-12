@@ -194,12 +194,12 @@ Quelques exemples :
 
 ** Raccourcis de productivité
 
-Les touches de fonction ci-dessous fournissent un environnement de travail
-inspiré de Borland Pascal pour les opérations les plus courantes : gestion des
-fichiers, navigation entre fenêtres, macros clavier, contrôle de version,
-navigation dans les erreurs de compilation et gestion des buffers.
+Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
+Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
+entre fenêtres, macros clavier, gestion de versions, navigation dans les erreurs
+de compilation et gestion des buffers.
 
-| Key     | Command                         |
+| Touche  | Commande                        |
 |---------+---------------------------------|
 | ~<f2>~    | ~save-buffer~                     |
 | ~<f3>~    | ~find-file~ / ~helm-for-files~      |
@@ -221,6 +221,7 @@ navigation dans les erreurs de compilation et gestion des buffers.
 | ~<f11>~   | ~undo-only~                       |
 | ~S-<f11>~ | ~undo-redo~                       |
 |---------+---------------------------------|
+| ~<f12>~   | ~switch-to-buffer~  / ~helm-mini~   |
 | ~S-<f12>~ | ~boost-kill-current-buffer~       |
 | ~C-<f12>~ | ~boost-helm-generic-imenu~        |
 | ~M-<f12>~ | ~bury-buffer~                     |
@@ -228,6 +229,8 @@ navigation dans les erreurs de compilation et gestion des buffers.
 | ~C-c 1~   | ~find-name-dired~                 |
 | ~C-c 2~   | ~find-grep-dired~                 |
 | ~C-c 3~   | ~rgrep~                           |
+|---------+---------------------------------|
+| ~M-q~     | ~boost-fill-paragraph-dwim~       |
 
 * Formations EmacsBoost
 
