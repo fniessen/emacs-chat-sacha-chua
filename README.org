@@ -120,7 +120,7 @@ Références :
 
 * Mon organisation quotidienne
 
-** TODO Org mode
+** TODO Org mode                                                      :personal:
 
 Org mode est le centre de mon organisation.
 
@@ -132,7 +132,7 @@ Je l'utilise pour :
 - écrire de la documentation ;
 - suivre mes projets personnels.
 
-** STRT Suivi du temps passé
+** STRT Suivi du temps passé                                              :work:
 
 Je mesure précisément le temps consacré à mes activités professionnelles grâce
 au système de =org-clock-in= / =org-clock-out=.
@@ -178,10 +178,57 @@ certaines parties d'un document avant son enregistrement.
 
 Cela évite les oublis et garantit que les documents restent cohérents.
 
+Exemple :
+
+#+name: participants
+| Nom           | Société | Prix HT |   |
+|---------------+---------+---------+---|
+| Alice Martin  | ACME    |  500.00 | \EUR |
+| Bob Dupont    | ACME    |  500.00 | \EUR |
+| Claire Durand | Contoso |  750.00 | \EUR |
+| David Leroy   | ACME    |  500.00 | \EUR |
+#+TBLFM: @6$3=vsum(@I..@-I);%.2f
+
+Comptabilité :
+
+#+LATEX: \hfill\colorbox{black!10}{\begin{minipage}{7.5cm}
+#+ATTR_HTML: :style margin-left:auto; margin-right:0; background:#f2f2f2;
+#+ATTR_LATEX: :environment tabu :align Xrl
+| /Sous-total HT/ | 2250.00 | \EUR |
+|---------------+---------+---|
+| /TVA @ 21%/     |  472.50 | \EUR |
+|---------------+---------+---|
+| *Total TTC*     | *2722.50* | *\EUR* |
+#+TBLFM: @1$2=vsum(remote(participants,@2$3..@>$3));%.2f::@2$2=@1*0.21;%.2f::@3$2=vsum(@1..@-1);*%.2f*
+#+LATEX: \end{minipage}}
+
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a6-dynamic-blocks
 
 ** Édition rectangle
+
+L'édition rectangle est l'une de ces fonctionnalités méconnues d'Emacs qui
+deviennent rapidement indispensables dès que l'on manipule du texte
+structuré. Elle fait gagner énormément de temps lorsqu'on travaille
+quotidiennement avec du texte semi-structuré.
+
+Elle permet de sélectionner et de modifier (couper, copier, effacer ou
+remplacer) une zone *rectangulaire* de texte.
+
+J'utilise cette fonctionnalité régulièrement pour :
+
+- insérer ou supprimer un préfixe sur plusieurs lignes ;
+- transformer rapidement des listes ;
+- préparer des données ;
+- éditer des blocs de code ou des fichiers de configuration.
+
+Par exemple :
+
+#+begin_example
+Alice    Martin    Bruxelles
+Bob      Dupont    Namur
+Claire   Durand    Liège
+#+end_example
 
 ** Automatisations dans Dired
 
