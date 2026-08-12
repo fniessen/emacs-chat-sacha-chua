@@ -153,9 +153,13 @@ Copier la ligne courante lorsqu'aucune région n'est active.
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#deletion-and-killing
 
-** Git
+** VCS (Git)
 
 *** EDiff
+
+| Touche | Commande |
+|--------+----------|
+| ~E~      | ~vc-ediff~ |
 
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#vc-directory-mode
@@ -179,18 +183,22 @@ https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt#a
 
 ** Édition rectangle
 
-** Autres automatisations
+** Automatisations dans Dired
 
 Quelques exemples :
 
-- raccourcis clavier (~C-x C-j~ dans Dired) ;
-- commandes personnalisées.
+| Touche  | Commande                                 |
+|---------+------------------------------------------|
+| ~C-x C-j~ | ~dired-jump~ (global)                      |
+| ~o~       | ~boost-dired-open-marked-files-externally~ |
 
-** o dans Dired
+** Automatisations dans Isearch
 
-** Number of matches in C-s
+| Touche | Commande                              |
+|--------+---------------------------------------|
+| ~C-o~    | ~helm-swoop-from-isearch~ (lors du C-s) |
 
-** C-s C-o
+Nombre de correspondances grâce à Anzu.
 
 ** Raccourcis de productivité
 
