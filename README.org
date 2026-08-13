@@ -181,7 +181,7 @@ recalcule les blocs dynamiques et les tables, et réaligne les tags.
 
 Cela évite les oublis et garantit que
 {{{hl(les données dérivées restent synchronisées avec leur source)}}}. \\
-/Hey user, this is an Org macro.../
+/Hey user, this is an *Org macro*.../
 
 {{{clearpage}}}
 
