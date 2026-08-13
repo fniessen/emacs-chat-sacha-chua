@@ -205,7 +205,6 @@ Montant à facturer :
 #+ATTR_HTML: :style margin-left:auto; margin-right:0;
 #+ATTR_LATEX: :environment tabu :align Xrl
 | /Sous-total HT/ | 2250.00 | \EUR |
-|---------------+---------+---|
 | /TVA @ 21%/     |  472.50 | \EUR |
 |---------------+---------+---|
 | *Total TTC*     | *2722.50* | *\EUR* |
