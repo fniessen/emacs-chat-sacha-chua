@@ -250,9 +250,9 @@ Quelques exemples :
 
 ** Automatisations dans Isearch
 
-| Touche | Commande                              |
-|--------+---------------------------------------|
-| ~C-o~    | ~helm-swoop-from-isearch~ (lors du C-s) |
+| Touche | Commande                |
+|--------+-------------------------|
+| ~C-o~    | ~helm-swoop-from-isearch~ |
 
 Nombre de correspondances grâce à Anzu.
 
