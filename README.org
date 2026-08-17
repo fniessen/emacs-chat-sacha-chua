@@ -12,7 +12,9 @@
 # LaTeX export.
 #+LATEX_CLASS: mcreport
 #+SETUPFILE: ~/org/setup/latex-listings.setup
+#+SETUPFILE: ~/org/setup/latex-fonts.setup
 #+SETUPFILE: ~/org/setup/latex-admonitions.setup
+#+LATEX_HEADER: % * Document Setup
 
 * Présentation
 
@@ -262,48 +264,50 @@ Pascal pour les opérations les plus courantes : gestion des fichiers, navigatio
 entre fenêtres et buffers, vues d'agenda Org, macros clavier, gestion de
 versions et navigation dans les erreurs de compilation.
 
+| Touche  | Commande                           |
+|---------+------------------------------------|
+| ~<f2>~    | ~save-buffer~                        |
+| ~<f3>~    | ~find-file~ / ~helm-for-files~         |
+|---------+------------------------------------|
+| ~<f5>~    | ~boost-toggle-window-split~          |
+| ~<f6>~    | ~boost-previous-buffer-or-window~    |
+|---------+------------------------------------|
+| ~<f8>~    | ~call-last-kbd-macro~                |
+| ~S-<f8>~  | ~boost-toggle-kmacro-recording~      |
+| ~C-<f8>~  | ~kmacro-name-last-macro~             |
+|---------+------------------------------------|
+| ~<f9>~    | ~boost--org-rebuild-dependent-files~ |
+| ~C-<f9>~  | ~boost-vc-status-here~               |
+|---------+------------------------------------|
+| ~<f10>~   | ~next-error~                         |
+| ~S-<f10>~ | ~previous-error~                     |
+| ~C-<f10>~ | ~first-error~                        |
+|---------+------------------------------------|
+| ~<f11>~   | ~undo-only~                          |
+| ~S-<f11>~ | ~undo-redo~                          |
+|---------+------------------------------------|
+| ~<f12>~   | ~switch-to-buffer~  / ~helm-mini~      |
+| ~S-<f12>~ | ~boost-kill-current-buffer~          |
+| ~C-<f12>~ | ~boost-helm-generic-imenu~           |
+| ~M-<f12>~ | ~bury-buffer~                        |
+|---------+------------------------------------|
+| ~C-c 1~   | ~find-name-dired~                    |
+| ~C-c 2~   | ~find-grep-dired~                    |
+| ~C-c 3~   | ~rgrep~                              |
+|---------+------------------------------------|
+| ~M-q~     | ~boost-fill-paragraph-dwim~          |
+|---------+------------------------------------|
+| ~M-S-a~   | ~boost-show-hidden-text~             |
+
 Les variantes de =F6= permettent notamment d'afficher des vues d'agenda adaptées
 au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 
 | Touche   | Commande                             |
 |----------+--------------------------------------|
-| ~<f2>~     | ~save-buffer~                          |
-| ~<f3>~     | ~find-file~ / ~helm-for-files~           |
-|----------+--------------------------------------|
-| ~<f5>~     | ~boost-toggle-window-split~            |
-| ~<f6>~     | ~boost-previous-buffer-or-window~      |
-|----------+--------------------------------------|
 | ~S-<f6>~   | ~boost-org-agenda-current-file~        |
 | ~C-<f6>~   | ~boost-org-agenda-project-org~         |
 | ~M-<f6>~   | ~boost-org-agenda-project-org-and-txt~ |
 | ~M-S-<f6>~ | ~boost-project-unscheduled-todos~      |
-|----------+--------------------------------------|
-| ~<f8>~     | ~call-last-kbd-macro~                  |
-| ~S-<f8>~   | ~boost-toggle-kmacro-recording~        |
-| ~C-<f8>~   | ~kmacro-name-last-macro~               |
-|----------+--------------------------------------|
-| ~<f9>~     | ~boost--org-rebuild-dependent-files~   |
-| ~C-<f9>~   | ~boost-vc-status-here~                 |
-|----------+--------------------------------------|
-| ~<f10>~    | ~next-error~                           |
-| ~S-<f10>~  | ~previous-error~                       |
-| ~C-<f10>~  | ~first-error~                          |
-|----------+--------------------------------------|
-| ~<f11>~    | ~undo-only~                            |
-| ~S-<f11>~  | ~undo-redo~                            |
-|----------+--------------------------------------|
-| ~<f12>~    | ~switch-to-buffer~  / ~helm-mini~        |
-| ~S-<f12>~  | ~boost-kill-current-buffer~            |
-| ~C-<f12>~  | ~boost-helm-generic-imenu~             |
-| ~M-<f12>~  | ~bury-buffer~                          |
-|----------+--------------------------------------|
-| ~C-c 1~    | ~find-name-dired~                      |
-| ~C-c 2~    | ~find-grep-dired~                      |
-| ~C-c 3~    | ~rgrep~                                |
-|----------+--------------------------------------|
-| ~M-q~      | ~boost-fill-paragraph-dwim~            |
-|----------+--------------------------------------|
-| ~M-S-a~    | ~boost-show-hidden-text~               |
 
 ** Intégration avec le Shell
 
