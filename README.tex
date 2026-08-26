@@ -413,6 +413,56 @@ rulecolor=\color{gray!65!black},
 % END SETUPFILE: latex-listings.setup
 % ==============================================================
 % ==============================================================
+% BEGIN SETUPFILE: latex-fonts.setup
+% Purpose: LuaLaTeX font configuration and font selection
+% Scope: All LaTeX exports
+% ==============================================================
+% * Fonts
+
+\usepackage{fontspec}
+
+% ** Main font
+
+\setsansfont{KpSans}
+
+% ** Default family
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% ** Monospace font configuration
+
+% Disable contextual substitutions to avoid unwanted glyph
+% transformations in code examples.
+\defaultfontfeatures[\ttfamily]{Contextuals={}}
+
+% ** Monospaced font selection
+
+% *** Prefer JuliaMono
+
+% JuliaMono is designed for programming and provides excellent
+% support for Unicode symbols commonly found in source code.
+\IfFontExistsTF{JuliaMonoXXX}% Poor UTF-8 coverage?
+{\setmonofont[Scale=0.79]{JuliaMono}}
+{
+
+% *** Fallback: DejaVu Sans Mono
+
+% First fallback: DejaVu Sans Mono offers broad Unicode
+% coverage and is commonly available on Linux systems.
+\IfFontExistsTF{DejaVu Sans Mono}
+{\setmonofont[Scale=0.79]{DejaVu Sans Mono}}
+{
+
+% *** Final fallback: Latin Modern Mono
+\setmonofont[Scale=0.89]{Latin Modern Mono}
+
+}
+}
+
+% ==============================================================
+% END SETUPFILE: latex-fonts.setup
+% ==============================================================
+% ==============================================================
 % BEGIN SETUPFILE: latex-admonitions.setup
 % Purpose: Read the Docs-style admonition and task boxes
 % Scope: LaTeX exports using standard classes and Beamer
@@ -422,11 +472,12 @@ rulecolor=\color{gray!65!black},
 % ==============================================================
 % END SETUPFILE: latex-admonitions.setup
 % ==============================================================
+% * Document Setup
 
 % End of org-mc-latex-classes.el -------------------
 \setcounter{secnumdepth}{2}
 \author{Fabrice Niessen}
-\date{2026-08-13}
+\date{2026-08-27}
 \title{Emacs Chat avec Sacha Chua}
 \hypersetup{
  pdfauthor={Fabrice Niessen},
@@ -442,7 +493,7 @@ rulecolor=\color{gray!65!black},
 \tableofcontents
 
 \chapter{Présentation}
-\label{sec:orgca504b0}
+\label{sec:org69c26ef}
 
 Je suis consultant IT en Belgique (à Leuven ;-)) et utilisateur passionné
 d'Emacs depuis 1999.
@@ -467,24 +518,24 @@ ShellBoost\ldots{} et GitBoost\ldots{}).
 
 Référence : \url{https://github.com/fniessen}
 \chapter{Agenda}
-\label{sec:org01d5d44}
+\label{sec:orge0bfe35}
 
 Quelques sujets que l'on pourrait aborder :
 
 \begin{itemize}
 \item mon parcours avec Emacs ;
-\item le thème (officiel) de couleurs \hyperref[sec:org4d04cb6]{Leuven} ;
-\item ma configuration Emacs (\og \hyperref[sec:org6747712]{Emacs Leuven}\fg{}) ;
-\item \hyperref[sec:orgfee417b]{org-html-themes} ;
-\item \hyperref[sec:org8ab5f78]{boost-org-latex-toolkit} ;
-\item \hyperref[sec:org5fcc941]{mon organisation quotidienne} ;
-\item \hyperref[sec:orga2472ec]{quelques astuces} et automatisations ;
-\item les \hyperref[sec:org5082260]{formations EmacsBoost}.
+\item le thème (officiel) de couleurs \hyperref[sec:org1691f13]{Leuven} ;
+\item ma configuration Emacs (\og \hyperref[sec:orgeb405b9]{Emacs Leuven}\fg{}) ;
+\item \hyperref[sec:orgdba35f4]{org-html-themes} ;
+\item \hyperref[sec:orgdfe2bbf]{boost-org-latex-toolkit} ;
+\item \hyperref[sec:org3e039b3]{mon organisation quotidienne} ;
+\item \hyperref[sec:org4e12449]{quelques astuces} et automatisations ;
+\item les \hyperref[sec:orgbea99c4]{formations EmacsBoost}.
 \end{itemize}
 
 Tous ces projets répondent à des besoins rencontrés dans mon travail quotidien.
 \chapter{leuven-theme}
-\label{sec:org4d04cb6}
+\label{sec:org1691f13}
 
 Le thème \verb|leuven| est un thème clair qui privilégie :
 
@@ -500,7 +551,7 @@ visuelle.
 
 Référence : \url{https://github.com/fniessen/emacs-leuven-theme}
 \chapter{Emacs Leuven (EmacsBoost)}
-\label{sec:org6747712}
+\label{sec:orgeb405b9}
 
 Ma configuration \verb|emacs-leuven| est l'aboutissement de nombreuses années
 d'utilisation quotidienne.
@@ -530,7 +581,7 @@ chacun à tirer le meilleur parti d'Emacs.
 
 Référence : \url{https://github.com/fniessen/emacs-leuven}
 \chapter{Export vers HTML}
-\label{sec:orgfee417b}
+\label{sec:orgdba35f4}
 
 \verb|org-html-themes| est né d'un besoin très concret : \textbf{produire facilement des
 exports} HTML Org mode qui soient directement publiables, professionnels et
@@ -552,7 +603,7 @@ Objectifs :
 
 Référence : \url{https://github.com/fniessen/org-html-themes}
 \chapter{Export vers PDF}
-\label{sec:org8ab5f78}
+\label{sec:orgdfe2bbf}
 
 Références :
 \begin{itemize}
@@ -560,10 +611,10 @@ Références :
 \item \url{https://github.com/fniessen/org-macros}
 \end{itemize}
 \chapter{Mon organisation quotidienne}
-\label{sec:org5fcc941}
+\label{sec:org3e039b3}
 
 \section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{TODO}}}}}{TODO} Org mode\texorpdfstring{\NoCaseChange{\hfill{}\fbox{\textsc{personal}}}}{ (personal)}}
-\label{sec:org385012c}
+\label{sec:org03aaa5b}
 
 Org mode est le centre de mon organisation.
 
@@ -577,7 +628,7 @@ Je l'utilise pour :
 \item suivre mes projets personnels.
 \end{itemize}
 \section{\texorpdfstring{\NoCaseChange{{\color{red}\textbf{\textsf{STRT}}}}}{STRT} Suivi du temps passé\texorpdfstring{\NoCaseChange{\hfill{}\fbox{\textsc{work}}}}{ (work)}}
-\label{sec:org91cd7dd}
+\label{sec:org3e563b6}
 
 Je mesure précisément le temps consacré à mes activités professionnelles grâce
 au système de \verb|org-clock-in| / \verb|org-clock-out|.
@@ -589,21 +640,21 @@ Cela me permet :
 \item de produire des factures.
 \end{itemize}
 \chapter{Quelques astuces}
-\label{sec:orga2472ec}
+\label{sec:org4e12449}
 
 Quelques petites choses qui font \textbf{gagner beaucoup de temps}.
 \section{C-w / M-w sans sélectionner de région}
-\label{sec:org72a89b3}
+\label{sec:orgcb9e642}
 
 Couper ou copier la ligne courante lorsqu'aucune région n'est active.
 
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#deletion-and-killing}
 \section{VCS (Git)}
-\label{sec:org4f3cd91}
+\label{sec:org04aabdb}
 
 \subsection*{EDiff}
-\label{sec:orgac002fb}
+\label{sec:org290443b}
 
 \begin{center}
 \begin{tabular}{ll}
@@ -616,14 +667,14 @@ Touche & Commande\\
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#vc-directory-mode}
 \subsection*{Messages de commit}
-\label{sec:org95ffd24}
+\label{sec:org3fd53d8}
 
 Génération automatique de messages de commit par IA.
 
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-ai.txt\#git-commit-messages}
 \section{Mise à jour automatique du contenu avant enregistrement}
-\label{sec:org7db2c53}
+\label{sec:org247b2d9}
 
 La fonction \verb|boost--org-update-generated-content-before-save| met automatiquement
 à jour certaines parties du document juste avant l'enregistrement : elle
@@ -638,7 +689,7 @@ Cela évite les oublis et garantit que
 Lignes de facturation :
 
 \begin{table}[!htbp]
-\label{tab:org2383dc7}
+\label{tab:org2b242cc}
 \centering
 \begin{tabular}{llrl}
 Nom & Société & Prix HT & \\
@@ -668,7 +719,7 @@ Montant à facturer :
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-org.txt\#a6-dynamic-blocks}
 \section{Édition rectangle}
-\label{sec:org3f39bd1}
+\label{sec:org3fd5f53}
 
 L'édition rectangle est l'une de ces fonctionnalités méconnues d'Emacs qui
 deviennent rapidement indispensables dès que l'on manipule du texte
@@ -693,8 +744,19 @@ Alice    Martin    Bruxelles
 Bob      Dupont    Namur
 Claire   Durand    Liège
 \end{verbatim}
+\section{Tri, suppression}
+\label{sec:org1c38c7b}
+
+\begin{itemize}
+\item \verb|sort-lines| trie les lignes de la région sélectionnée par ordre alphabétique.
+\item \verb|keep-lines| supprime toutes les lignes de la région (ou du buffer après le
+point) qui \textbf{ne correspondent pas} à une regexp donnée.
+\item \verb|flush-lines| supprime les lignes qui \textbf{correspondent} à la regexp.
+\item \verb|boost-delete-duplicate-lines-trim| supprime les espaces en début/fin de ligne
+avant comparaison, puis supprime les lignes en doublon.
+\end{itemize}
 \section{Automatisations dans Dired}
-\label{sec:org62da7e3}
+\label{sec:orgd176cba}
 
 Quelques exemples :
 
@@ -707,7 +769,7 @@ Touche & Commande\\
 \end{tabular}
 \end{center}
 \section{Automatisations dans Isearch}
-\label{sec:org555f041}
+\label{sec:orgf28f34c}
 
 \begin{center}
 \begin{tabular}{ll}
@@ -719,15 +781,12 @@ Touche & Commande\\
 
 Nombre de correspondances grâce à Anzu.
 \section{Autres raccourcis de productivité}
-\label{sec:orga83ef8a}
+\label{sec:orgd05f662}
 
 Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
 Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
-entre fenêtres et buffers, vues d'agenda Org, macros clavier, gestion de
+entre fenêtres et buffers, vues d'agenda Org, \textbf{macros} clavier, gestion de
 versions et navigation dans les erreurs de compilation.
-
-Les variantes de \verb|F6| permettent notamment d'afficher des vues d'agenda adaptées
-au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 
 \begin{center}
 \begin{tabular}{ll}
@@ -737,12 +796,7 @@ Touche & Commande\\
 \lstinline|<f3>| & \lstinline|find-file| / \lstinline|helm-for-files|\\
 \hline
 \lstinline|<f5>| & \lstinline|boost-toggle-window-split|\\
-\lstinline|<f6>| & \lstinline|boost-previous-buffer-or-window|\\
-\hline
-\lstinline|S-<f6>| & \lstinline|boost-org-agenda-current-file|\\
-\lstinline|C-<f6>| & \lstinline|boost-org-agenda-project-org|\\
-\lstinline|M-<f6>| & \lstinline|boost-org-agenda-project-org-and-txt|\\
-\lstinline|M-S-<f6>| & \lstinline|boost-project-unscheduled-todos|\\
+\lstinline|<f6>| & \lstinline|boost-previous-buffer-or-next-window|\\
 \hline
 \lstinline|<f8>| & \lstinline|call-last-kbd-macro|\\
 \lstinline|S-<f8>| & \lstinline|boost-toggle-kmacro-recording|\\
@@ -770,10 +824,52 @@ Touche & Commande\\
 \lstinline|M-q| & \lstinline|boost-fill-paragraph-dwim|\\
 \hline
 \lstinline|M-S-a| & \lstinline|boost-show-hidden-text|\\
+\hline
+\lstinline|C-c .| & \lstinline|org-timestamp|\\
 \end{tabular}
 \end{center}
+
+Les variantes de \verb|F6| permettent notamment d'afficher des vues d'agenda adaptées
+au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
+
+\begin{center}
+\begin{tabular}{ll}
+Touche & Commande\\
+\hline
+\lstinline|S-<f6>| & \lstinline|boost-org-agenda-current-file|\\
+\lstinline|C-<f6>| & \lstinline|boost-org-agenda-project-org|\\
+\lstinline|M-<f6>| & \lstinline|boost-org-agenda-project-org-and-txt|\\
+\lstinline|M-S-<f6>| & \lstinline|boost-project-unscheduled-todos|\\
+\end{tabular}
+\end{center}
+\section{GPTel}
+\label{sec:orgb87ca90}
+
+\subsection*{Buffer de conversation}
+\label{sec:org475e9c9}
+
+\begin{center}
+\includegraphics[width=.75\linewidth]{gptel-chat-buffer.png}
+\end{center}
+
+Référence :
+\url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-gptel.txt\#17-chat-interface}
+\subsection*{GPTel-commit-msg}
+\label{sec:org76018ff}
+
+\textbf{But} : Générer des messages de commit Git à partir d'un buffer de diff avec
+GPTel.
+
+Le buffer de diff, quelle que soit la manière dont le diff a été produit (Magit,
+VC, diff-mode, sortie de \verb|git diff|, etc.), est envoyé au backend GPTel configuré,
+qui renvoie un message de commit décrivant les changements.
+
+Le message obtenu est affiché dans un buffer séparé et copié dans le \emph{kill-ring}.
+
+Référence :
+\url{https://github.com/fniessen/gptel-commit-msg}
 \section{Intégration avec le Shell}
-\label{sec:org6258242}
+\label{sec:org557f46f}
 
 Quelques commandes permettent d'établir un pont pratique entre Emacs et le
 terminal.
@@ -795,8 +891,21 @@ Emacs.
 
 Référence :
 \url{https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt\#shell-utilities}
+\section{Dotfiler (type GNU Stow) pour tous mes repos}
+\label{sec:orgafdb445}
+
+\textbf{But} : gérer mes fichiers Org dans deux dépôts Git distincts (perso vs pro, ou
+public vs privé), tout en y accédant depuis un seul répertoire logique unifié
+sur la machine, via des symlinks.
+
+Les deux repos sont clonés séparément (ex. \verb|~/.dotfiles/org-perso| et
+\verb|~/.dotfiles/org-pro|), et le dotfiler crée des liens symboliques vers un
+répertoire unique, ex. \verb|~/org|.
+
+Avantage : Un seul point d'entrée pour Emacs / Org-agenda; pas besoin de
+multiplier les chemins dans la config.
 \chapter{Formations EmacsBoost}
-\label{sec:org5082260}
+\label{sec:orgbea99c4}
 
 L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
 d'Emacs que j'utilise au quotidien, et qui me font réellement gagner du temps.
@@ -815,11 +924,11 @@ Les formations mettent l'accent sur :
 L'objectif est que les participants puissent appliquer immédiatement ce qu'ils
 ont appris dès leur retour au travail.
 
-Prochaine date à Paris : (Q4 2026 ou) Q1 2027.
+Prochaine date à Paris : mars 2027.
 
 Référence : \url{https://emacsboost.com}
 \section{Témoignages}
-\label{sec:orgddbc506}
+\label{sec:org3044a61}
 
 Quelques retours récurrents des participants :
 
@@ -831,7 +940,7 @@ seul.\fg{}
 \item \og Même après 20 ans d'utilisation quotidienne d'Emacs, j'ai appris énormément.\fg{}
 \end{itemize}
 \chapter{Merci}
-\label{sec:orga4931fd}
+\label{sec:org85cb013}
 
 Merci pour ton intérêt !
 

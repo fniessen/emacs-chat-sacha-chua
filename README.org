@@ -1,6 +1,6 @@
 #+TITLE:     Emacs Chat avec Sacha Chua
 #+AUTHOR:    Fabrice Niessen
-#+DATE:      2026-08-13
+#+DATE:      2026-08-27
 #+LANGUAGE:  fr
 #+OPTIONS:   toc:2 num:2
 
@@ -240,6 +240,15 @@ Bob      Dupont    Namur
 Claire   Durand    Liège
 #+end_example
 
+** Tri, suppression
+
+- =sort-lines= trie les lignes de la région sélectionnée par ordre alphabétique.
+- =keep-lines= supprime toutes les lignes de la région (ou du buffer après le
+  point) qui *ne correspondent pas* à une regexp donnée.
+- =flush-lines= supprime les lignes qui *correspondent* à la regexp.
+- =boost-delete-duplicate-lines-trim= supprime les espaces en début/fin de ligne
+  avant comparaison, puis supprime les lignes en doublon.
+
 ** Automatisations dans Dired
 
 Quelques exemples :
@@ -261,7 +270,7 @@ Nombre de correspondances grâce à Anzu.
 
 Les touches de fonction ci-dessous offrent un mode de travail inspiré de Borland
 Pascal pour les opérations les plus courantes : gestion des fichiers, navigation
-entre fenêtres et buffers, vues d'agenda Org, macros clavier, gestion de
+entre fenêtres et buffers, vues d'agenda Org, *macros* clavier, gestion de
 versions et navigation dans les erreurs de compilation.
 
 | Touche  | Commande                             |
@@ -298,6 +307,8 @@ versions et navigation dans les erreurs de compilation.
 | ~M-q~     | ~boost-fill-paragraph-dwim~            |
 |---------+--------------------------------------|
 | ~M-S-a~   | ~boost-show-hidden-text~               |
+|---------+--------------------------------------|
+| ~C-c .~   | ~org-timestamp~                        |
 
 Les variantes de =F6= permettent notamment d'afficher des vues d'agenda adaptées
 au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
@@ -308,6 +319,29 @@ au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 | ~C-<f6>~   | ~boost-org-agenda-project-org~         |
 | ~M-<f6>~   | ~boost-org-agenda-project-org-and-txt~ |
 | ~M-S-<f6>~ | ~boost-project-unscheduled-todos~      |
+
+** GPTel
+
+*** Buffer de conversation
+
+[[file:gptel-chat-buffer.png]]
+
+Référence :
+https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-gptel.txt#17-chat-interface
+
+*** GPTel-commit-msg
+
+*But* : Générer des messages de commit Git à partir d'un buffer de diff avec
+GPTel.
+
+Le buffer de diff, quelle que soit la manière dont le diff a été produit (Magit,
+VC, diff-mode, sortie de =git diff=, etc.), est envoyé au backend GPTel configuré,
+qui renvoie un message de commit décrivant les changements.
+
+Le message obtenu est affiché dans un buffer séparé et copié dans le /kill-ring/.
+
+Référence :
+https://github.com/fniessen/gptel-commit-msg
 
 ** Intégration avec le Shell
 
@@ -330,6 +364,19 @@ terminal.
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#shell-utilities
 
+** Dotfiler (type GNU Stow) pour tous mes repos
+
+*But* : gérer mes fichiers Org dans deux dépôts Git distincts (perso vs pro, ou
+public vs privé), tout en y accédant depuis un seul répertoire logique unifié
+sur la machine, via des symlinks.
+
+Les deux repos sont clonés séparément (ex. =~/.dotfiles/org-perso= et
+=~/.dotfiles/org-pro=), et le dotfiler crée des liens symboliques vers un
+répertoire unique, ex. =~/org=.
+
+Avantage : Un seul point d'entrée pour Emacs / Org-agenda; pas besoin de
+multiplier les chemins dans la config.
+
 * Formations EmacsBoost
 
 L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
@@ -347,7 +394,7 @@ Les formations mettent l'accent sur :
 L'objectif est que les participants puissent appliquer immédiatement ce qu'ils
 ont appris dès leur retour au travail.
 
-Prochaine date à Paris : (Q4 2026 ou) Q1 2027.
+Prochaine date à Paris : mars 2027.
 
 Référence : https://emacsboost.com
 
