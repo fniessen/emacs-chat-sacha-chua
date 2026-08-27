@@ -391,6 +391,38 @@ Schéma simplifié :
 - Emacs voit un seul dossier =~/org= → simplicité de configuration
 - Chaque repo Git reste indépendant (historique, remote, accès séparés)
 
+Le même principe s'applique pour =bin/= et =lisp/= : le vrai intérêt apparaît quand
+on généralise ce mécanisme à /tous/ les répertoires "fonctionnels" des repos, pas
+seulement =org/=.
+
+Chaque repo peut avoir sa propre structure interne :
+
+#+begin_example
+~/.dotfiles/repo-A/
+├── org/     (fichiers Org)
+├── bin/     (scripts perso)
+└── lisp/    (paquets Elisp)
+
+~/.dotfiles/repo-B/
+├── org/
+├── bin/
+└── lisp/
+#+end_example
+
+Dotfiler agrège alors chaque sous-dossier de chaque repo vers un répertoire
+unifié correspondant :
+
+#+begin_example
+repo-A/org/  ─┐
+repo-B/org/  ─┴──symlinks──> ~/org/    <── Org-agenda
+
+repo-A/bin/  ─┐
+repo-B/bin/  ─┴──symlinks──> ~/bin/    <── $PATH
+
+repo-A/lisp/ ─┐
+repo-B/lisp/ ─┴──symlinks──> ~/lisp/   <── load-path Emacs
+#+end_example
+
 * Formations EmacsBoost
 
 L'objectif de mes formations est simple : transmettre toutes les fonctionnalités
