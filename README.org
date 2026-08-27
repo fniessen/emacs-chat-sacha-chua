@@ -364,11 +364,11 @@ terminal.
 Référence :
 https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven.txt#shell-utilities
 
-** Dotfiler (type GNU Stow) pour tous mes repos
+** Dotfiler (type Stow) pour tous mes repos
 
 *But* : gérer mes fichiers Org dans deux dépôts Git distincts (perso vs pro, ou
 public vs privé), tout en y accédant depuis un seul répertoire logique unifié
-sur la machine, via des symlinks.
+sur la machine, via des /symlinks/.
 
 Les deux repos sont clonés séparément (ex. =~/.dotfiles/org-perso= et
 =~/.dotfiles/org-pro=), et le dotfiler crée des liens symboliques vers un
@@ -376,6 +376,20 @@ répertoire unique, ex. =~/org=.
 
 Avantage : Un seul point d'entrée pour Emacs / Org-agenda; pas besoin de
 multiplier les chemins dans la config.
+
+Schéma simplifié :
+
+#+begin_example
+[org-perso repo] ───┐
+                    ├──symlinks──> [~/org/] <──── [Emacs/Org-agenda]
+[org-pro repo]  ────┘
+#+end_example
+
+- Les fichiers réels vivent dans le répertoire =./org= de repos séparés
+- =~/org= ne contient QUE des liens symboliques (/symlinks/)
+- Dotfiler crée/gère automatiquement ces liens
+- Emacs voit un seul dossier =~/org= → simplicité de configuration
+- Chaque repo Git reste indépendant (historique, remote, accès séparés)
 
 * Formations EmacsBoost
 
