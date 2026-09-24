@@ -327,7 +327,7 @@ au contexte courant, depuis le fichier actif jusqu'à l'ensemble du projet.
 [[file:gptel-chat-buffer.png]]
 
 Référence :
-https://github.com/fniessen/emacs-leuven/blob/master/docs/emacs-leuven-gptel.txt#17-chat-interface
+https://github.com/fniessen/emacs-boost-gptel/blob/master/README.org#14-chat-interface
 
 *** GPTel-commit-msg
 
