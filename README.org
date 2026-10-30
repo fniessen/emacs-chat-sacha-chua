@@ -10,7 +10,7 @@
 #+SETUPFILE: ~/org/setup/html-theme-readtheorg.setup
 
 # LaTeX export.
-#+LATEX_CLASS: mcreport
+#+LATEX_CLASS: boostreport
 #+SETUPFILE: ~/org/setup/latex-listings.setup
 #+SETUPFILE: ~/org/setup/latex-fonts.setup
 #+SETUPFILE: ~/org/setup/latex-admonitions.setup
@@ -47,7 +47,7 @@ Quelques sujets que l'on pourrait aborder :
 - le thème (officiel) de couleurs [[*leuven-theme][Leuven]] ;
 - ma configuration Emacs ("[[*Emacs Leuven (EmacsBoost)][Emacs Leuven]]") ;
 - [[*Export vers HTML][org-html-themes]] ;
-- [[*Export vers PDF][boost-org-latex-toolkit]] ;
+- [[*Export vers PDF][org-latex-themes]] ;
 - [[*Mon organisation quotidienne][mon organisation quotidienne]] ;
 - [[*Quelques astuces][quelques astuces]] et automatisations ;
 - les [[*Formations EmacsBoost][formations EmacsBoost]].
@@ -119,7 +119,7 @@ Référence : https://github.com/fniessen/org-html-themes
 * Export vers PDF
 
 Références :
-- https://github.com/fniessen/boost-org-latex-toolkit
+- https://github.com/fniessen/org-latex-themes
 - https://github.com/fniessen/org-macros
 
 * Mon organisation quotidienne
@@ -183,7 +183,7 @@ recalcule les blocs dynamiques et les tables, et réaligne les tags.
 
 Cela évite les oublis et garantit que
 {{{hl(les données dérivées restent synchronisées avec leur source)}}}. \\
-/Hey user, this is an *Org macro*.../
+/Hey user, this is a *Org macro*.../
 
 {{{clearpage}}}
 
